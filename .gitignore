@@ -7,7 +7,7 @@ yarn-error.log*
 
 # Runtime data
 pids
-*.pid
+*.pidtodo-mvc-app
 *.seed
 *.pid.lock
 
