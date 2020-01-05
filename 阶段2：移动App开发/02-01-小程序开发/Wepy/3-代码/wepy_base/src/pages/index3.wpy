@@ -1,0 +1,40 @@
+<style lang="less">
+</style>
+<template>
+
+<view>
+  <view @tap="myTap" >点击我触发</view>
+  <!-- 
+    需求： index3页面 广播一个事件 say  2个组件 猫 和 狗 
+    1 猫 猫叫 
+    2 狗 狗叫
+    
+   -->
+   <Cat></Cat>
+   <Dog></Dog>
+</view>
+</template> 
+
+<script>
+  import wepy from 'wepy'
+  import Cat from "../components/Cat";
+  import Dog from "../components/Dog";
+ 
+  export default class Index3 extends wepy.page {
+    config = {
+      navigationBarTitleText: '我的组件测试',
+       navigationBarTextStyle: 'white'
+    }; 
+    methods={
+      myTap(){
+        // 开始触发组件的方法 广播
+        // this.$broadcast("子组件的事件名",...参数对象)
+        this.$broadcast("say",null);
+      }
+    }
+   components={
+     Cat,
+     Dog
+   }
+  }
+</script>

@@ -1,0 +1,123 @@
+{% extends "../layout/layout.html" %}
+
+{% block head %}
+<link rel="stylesheet" type="text/css" href="/public/css/page-sj-person-myfile.css" />
+{% endblock %}
+
+{% block main %}
+<div class="wrapper  myhome">
+  <div class="sui-layout layout3">
+    <div class="sidebar">
+      <div class="myhome-list">
+        <ul class="home-list">
+          <li><a href="/settings/profile">基本资料</a></li>
+          <li class="active"><a href="/settings/account">账户设置</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="content">
+      <div class="file-edit">
+        <div class="info" style="margin-top: 15px;">
+          <h3 class="tit"><span>密码修改</span></h3>
+          <!-- 个人信息 -->
+          <div class="sui-row-fluid person canadd">
+            <div class="form-show">
+              <form id="password_form" action="/users/update/password" class="sui-form">
+                <div class="sui-row-fluid">
+                  <div class="span6">
+                    <div class="control-group">
+                      <label for="password" class="control-label">现在密码</label>
+                      <div class="controls">
+                        <input type="text" id="password" class="input-large" name="password" />
+                      </div>
+                    </div>
+                    <div class="control-group">
+                      <label for="newPassword" class="control-label">新密码</label>
+                      <div class="controls">
+                        <input type="text" id="newPassword" class="input-large" name="newPassword" />
+                      </div>
+                    </div>
+                    <div class="control-group">
+                      <label for="confirmPassword" class="control-label">确认密码</label>
+                      <div class="controls">
+                        <input type="text" id="confirmPassword" class="input-large" name="confirmPassword" />
+                      </div>
+                    </div>
+                    <div class="control-group btns">
+                      <button class="sui-btn btn-cancel">取消</button>
+                      <button type="submit" class="sui-btn btn-save">保存</button>
+                    </div>
+                  </div>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+        <div class="info" style="margin-top: 15px;">
+          <h3 class="tit"><span>个性网址</span></h3>
+          <!-- 个人信息 -->
+          <div class="sui-row-fluid person canadd">
+            <div class="form-show">
+              <form id="urlTokenForm" class="sui-form">
+                <div class="sui-row-fluid">
+                  <div class="span6">
+                    <div class="control-group">
+                      <div class="controls">
+                        <a href="#">http://localhost:3000/people/</a>
+                        <input type="text" id="urlToken" class="input-large" name="urlToken" value="{{ user.urlToken }}" />
+                      </div>
+                    </div>
+                    <div class="control-group btns">
+                      <button class="sui-btn btn-cancel">取消</button>
+                      <button type="submit" class="sui-btn btn-save">保存</button>
+                    </div>
+                  </div>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="clearfix"></div>
+</div>
+{% endblock %}
+
+{% block script %}
+<script>
+  $('#password_form').on('submit', function () {
+    $.ajax({
+      url: '/users/update/password',
+      type: 'PATCH',
+      data: $(this).serialize(),
+      success: function (data) {
+        window.alert('修改成功，请牢记新密码')
+      },
+      error: function (err) {
+        if (err.responseJSON.error === 'body.password') {
+          window.alert('密码错误，无法修改')
+        }
+      }
+    })
+    return false
+  })
+
+  $('#urlTokenForm').on('submit', function () {
+    $.ajax({
+      url: '/users/update/url_token',
+      type: 'PATCH',
+      data: $(this).serialize(),
+      success: function (data) {
+        window.alert('修改成功')
+      },
+      error: function (err) {
+        if (err.responseJSON.error === 'body.urlToken') {
+          window.alert('个性域名已被占用')
+        }
+      }
+    })
+    return false
+  })
+</script>
+{% endblock %}

@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>WebGL案例效果展示</title>
+    <style type="text/css">
+      video{
+          display: none;
+      }
+      h3{
+          cursor: pointer;
+      }
+    </style>
+</head>
+<body>
+    <div>
+        <h3>WebGL-3D效果</h3>
+        <video onclick="this.play()" 
+                src="files/01-WebGL-3D效果.mp4">
+        </video>
+        <h3>WebGL-纹理透视</h3>
+        <video onclick="this.play()" 
+                src="files/02-WebGL-纹理透视.mp4">
+        </video>
+        <h3>three.js-变形动画</h3>
+        <video onclick="this.play()" 
+                src="files/03-three.js-变形动画.mp4">
+        </video>
+        <h3>three.js-骨格绘制</h3>
+        <video onclick="this.play()" 
+                src="files/04-three.js-骨格绘制.mp4">
+        </video>
+    </div>
+    <script type="text/javascript">
+        var h3s=document.getElementsByTagName("h3");
+        for(var i=0;i<h3s.length;i++){
+            h3s[i].onclick=function(e){
+                var _n=this.nextElementSibling;          
+                    _n.style.display="block";     
+            }
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,29 @@
+<style lang="less">
+</style>
+<template>
+     
+<view>
+<A></A>
+<B></B>
+
+</view>
+</template> 
+
+<script>
+  import wepy from 'wepy'
+  import A from "../components/A";
+  import B from "../components/B";
+
+
+  export default class Index5 extends wepy.page {
+    config = {
+      navigationBarTitleText: '我的组件测试',
+       navigationBarTextStyle: 'white'
+    }; 
+    components={
+      A,
+      B
+    }
+    
+  }
+</script>

@@ -1,0 +1,44 @@
+<template>
+  <view class="nav">
+    <repeat for="{{navArr}}" key="index" >
+      <navigator>
+        <text class="iconfont icon {{item.icon}}"></text>
+        <view>{{item.text}}</view>
+      </navigator>
+    </repeat>
+  </view>
+</template>
+
+<script>
+import wepy from 'wepy';
+export default class Nav extends wepy.component {
+  props = {
+    navArr:Array
+  };
+}
+</script>
+
+<style lang="less">
+.nav{
+  display: flex;
+  flex-wrap: wrap;
+  navigator{
+      margin-top: 10px;
+    width: 20%;
+    text-align: center;
+    text{
+      font-size: 60rpx;
+      padding: 5px;
+      border-radius: 50%;
+      background-color: #60cab3;
+      color: #fff;
+    }
+    view{
+      margin-top: 10px;
+      font-size: 26rpx;
+      color: #666;
+    }
+    
+  }
+}
+</style>

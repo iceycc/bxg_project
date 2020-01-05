@@ -1,0 +1,13 @@
+<p>
+  users works!
+</p>
+<button (click)="jump()">home</button>
+
+<ul>
+  <!-- <li *ngFor="let item of userList" (click)="jumpToDetail(item.id)">{{item.name}}</li> -->
+  <li *ngFor="let item of userList">
+    <a [routerLink]="['/users/detail', item.id]">{{item.name}}</a>
+  </li>
+</ul>
+
+<router-outlet></router-outlet>

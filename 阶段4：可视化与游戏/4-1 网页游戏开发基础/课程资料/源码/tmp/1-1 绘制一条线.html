@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <!-- 添加画布元素 -->
+    <canvas id="cvs"
+            width="320"
+            height="480"
+            style="border: dashed #ccc 1px">
+        你的浏览器不支持画布元素
+    </canvas>
+    <script type="text/javascript">
+       //先获取画布元素并保存
+       var cvs=document.getElementById("cvs");
+       //再获取画布元素的2d上下文环境
+       var cxt=cvs.getContext("2d");
+
+       //先定位一个开始原点
+       cxt.moveTo(60,60);
+       //再定位一个结束点
+       cxt.lineTo(120,60);//设置了画布的绘制路径
+       //使用画笔描边
+       cxt.stroke();
+
+    </script>
+</body>
+</html>

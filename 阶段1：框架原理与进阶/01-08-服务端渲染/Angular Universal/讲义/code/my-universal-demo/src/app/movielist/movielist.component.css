@@ -1,0 +1,19 @@
+.movie-type {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 60px;
+}
+.movie-box {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 20px 0;
+  padding: 10px 0;
+  width: 40%;
+  box-shadow: 0 0 10px #bbb;
+  
+}
+.movie-box:hover {
+  box-shadow: rgba(0,0,0,0.3) 0px 19px 60px;
+}

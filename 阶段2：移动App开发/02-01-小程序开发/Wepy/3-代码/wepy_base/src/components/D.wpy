@@ -1,0 +1,20 @@
+<template>
+  <view @tap="myTap" >D:</view>
+</template>
+
+<script>
+import wepy from 'wepy';
+export default class D extends wepy.component {
+  methods={
+    myTap(){
+      console.log("D组件的tap");
+      // 开始触发 自定义事件
+      // this.$emit("事件名","参数")
+      this.$emit("parentFn","DD")
+    }
+  }
+}
+</script>
+
+<style>
+</style>

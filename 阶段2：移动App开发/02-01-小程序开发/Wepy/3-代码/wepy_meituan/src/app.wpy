@@ -1,0 +1,38 @@
+<style src="./style/iconfont.wxss"> </style>
+<style src="./style/iconfont2.wxss"> </style>
+<style lang="less">
+page,view,text,navigator,swiper,swiper-item,image{
+  box-sizing: border-box;
+}
+page{
+  padding: 10px;
+}
+
+</style>
+
+<script>
+import wepy from 'wepy'
+import 'wepy-async-function';
+import './mock/mock_index_data.js';
+export default class extends wepy.app {
+  constructor () {
+        super();
+        this.use('promisify');
+    }
+  config = {
+    pages: [
+      'pages/index'
+    ],
+    window: {
+      backgroundTextStyle: 'light',
+      navigationBarBackgroundColor: '#fff',
+      navigationBarTitleText: 'WeChat',
+      navigationBarTextStyle: 'black'
+    }
+  }
+
+  onLaunch() {
+    console.log('on launch')
+  }
+}
+</script>

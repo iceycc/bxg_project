@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <!-- 添加画布元素 -->
+    <canvas id="cvs"
+            width="300"
+            height="200"
+            style="border: dashed #ccc 1px">
+        你的浏览器不支持画布元素
+    </canvas>
+    <script type="text/javascript">
+       //先获取画布元素并保存
+       var cvs=document.getElementById("cvs");
+       //再获取画布元素的2d上下文环境
+       var ctx=cvs.getContext("2d");
+
+       var w=cvs.width,h=cvs.height;
+       var arrGif=["一等奖",'二等奖','很遗憾没中奖！','三等奖'];
+       var rdmGif=arrGif[Math.floor(Math.random()*arrGif.length)];
+
+       ctx.font="bold 32px sans-serif";
+       ctx.textAlign='center';
+       ctx.textBaseline='middle';
+       ctx.fillStyle='red';
+       ctx.fillText(rdmGif,w/2,h/2);
+
+       var dataUrl=cvs.toDataURL('image/png',1);
+       console.log(dataUrl);
+       cvs.style.background='url('+dataUrl+')';
+
+       ctx.clearRect(0,0,w,h);
+       ctx.fillStyle='#ddd';
+       ctx.fillRect(0,0,w,h);
+
+var flag=false;
+       cvs.addEventListener("mousedown",function(){
+           flag=true;
+           ctx.globalCompositeOperation='destination-out';
+       })
+       cvs.addEventListener("mousemove",function(e){
+           if(flag){
+           var x=e.clientX;
+           var y=e.clientY;
+           ctx.fillStyle="red";
+           ctx.fillRect(x,y,30,30);
+           ctx.fill();
+           }
+       })
+       cvs.addEventListener("mouseup",function(){
+        flag=false;
+        //ctx.globalCompositeOperation='source-over';
+       })
+
+
+
+        
+
+    </script>
+</body>
+</html>

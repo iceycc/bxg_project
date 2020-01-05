@@ -1,0 +1,21 @@
+<template>
+  <view @tap="aTap">B:</view>
+</template>
+
+<script>
+import wepy from 'wepy';
+export default class SonB extends wepy.component {
+  data = {
+    msg: ''
+  };
+  methods={
+    aTap(){
+      // 触发父组件的方法 $emit
+      this.$emit("showMsg","sonB");
+    }
+  }
+}
+</script>
+
+<style>
+</style>

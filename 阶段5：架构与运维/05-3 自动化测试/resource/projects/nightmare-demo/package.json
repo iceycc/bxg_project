@@ -1,0 +1,16 @@
+{
+  "name": "nightmare-demo",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "mocha"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "mocha": "^6.1.4",
+    "nightmare": "^3.0.2"
+  }
+}

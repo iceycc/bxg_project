@@ -1,0 +1,130 @@
+/*
+* 播放区
+*/ 
+.article_banner{
+    height: 500px;
+    background: #000;
+}
+.video_box{ 
+    width: 100%;
+    min-height: 500px;
+    text-align: center;
+    video{       
+        width: 800px;
+        height: 490px;
+    }
+}
+
+.section{
+    max-height: 500px;
+    overflow: auto;
+}
+
+/*
+* 问答，笔记，章节资源
+*/ 
+
+.article_cont {
+    position: relative;
+    width: 100%;
+    max-width: 1170px;
+    margin: 0 auto;
+    overflow: hidden;
+  }
+
+.tit_list {
+font-size: 16px;
+margin: 20px 0;
+}
+
+.tabp{
+    padding:0px 10px;
+    a {
+        color:#0094ff;
+        
+        &:hover{
+            color:red;
+        }
+    }
+}
+
+/*课程大纲*/ 
+.sesionUl{   
+    div{
+        margin-top:10px; 
+    }
+    a{
+        color:rgba(255,255,255,0.7);
+        font-size: 12px;
+        &:hover{
+            color:yellowgreen;
+        }
+    }
+
+}
+.active{
+    color:yellowgreen !important;
+}
+
+/*问答，笔记*/ 
+.content_title{
+    margin-bottom: 10px;   
+    padding: 20px 30px 20px 30px;
+    color: #787d82;
+    background-color: #f4f4f4;
+}
+
+
+.item{
+    background-color: #f4f4f4;
+    margin-bottom: 10px;
+    font-size: 16px;
+    color: #050505;
+    padding: 30px;
+    overflow: hidden;
+    .item_left{
+        float: left;
+        width: 15%;
+        max-width: 170px;
+        color: #0077cc;
+        text-align: center;
+        margin-top: 10px;
+    }
+    .item_right{
+        width: 80%;
+        float: left;
+        margin-top: 10px;
+    }
+    .title{
+        font-weight: bold;
+    }
+    .content{
+        color:#787d82;
+        font-size: 14px;
+    }
+    .action_box{
+        position: absolute;
+        right: 0px;
+        top: 0px;
+        color:#0094ff;
+    }
+    
+}
+
+.replay{
+    .title{
+        background: #f4f4f4;
+        padding-left: 10px;
+        padding: 5px;
+    }
+    .content{
+        padding: 10px; 
+    }
+      
+    span{
+        &:nth-child(2){
+            margin: 0 10px;
+        }
+        
+    }
+}

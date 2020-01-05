@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <canvas id="cvs" style="border: solid 1px #ccc"></canvas>
+
+    <script type="text/javascript">
+        //获取画布元素
+        var cvs=document.getElementById("cvs");
+        //获取工具集
+        var cxt=cvs.getContext("2d");
+        //设置文字的样式
+        cxt.font='bold 20px 黑体';
+
+        //调用工具集中的API绘制文字
+        cxt.fillText('画布',30,30);
+        cxt.strokeText('画布',50,50);
+
+    </script>
+</body>
+</html>

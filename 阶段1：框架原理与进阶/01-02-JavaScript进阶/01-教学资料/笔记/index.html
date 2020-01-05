@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Flow &amp; TypeScript | Flow &amp; TypeScript</title>
+    <meta name="description" content="你可能已经听说过Flow和TypeScrpit, 今天我们就一起来了解一下两者的异同，探索一下Flow和TypeScript的使用差异">
+    
+    
+    <link rel="preload" href="/assets/css/styles.eba28600.css" as="style"><link rel="preload" href="/assets/js/app.eba28600.js" as="script"><link rel="preload" href="/assets/js/3.1b2b870d.js" as="script"><link rel="prefetch" href="/assets/js/1.c85243b6.js"><link rel="prefetch" href="/assets/css/1.styles.c85243b6.css"><link rel="prefetch" href="/assets/css/2.styles.91cead3f.css"><link rel="prefetch" href="/assets/js/2.91cead3f.js"><link rel="prefetch" href="/assets/js/4.d391d97c.js"><link rel="prefetch" href="/assets/js/5.a3513016.js">
+    <link rel="stylesheet" href="/assets/css/styles.eba28600.css"><link rel="stylesheet" href="/assets/css/1.styles.c85243b6.css"><link rel="stylesheet" href="/assets/css/2.styles.91cead3f.css">
+  </head>
+  <body>
+    <div id="app" data-server-rendered="true"><div class="theme-container"><header class="navbar"><div class="sidebar-button"><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" viewBox="0 0 448 512" class="icon"><path fill="currentColor" d="M436 124H12c-6.627 0-12-5.373-12-12V80c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12z"></path></svg></div> <a href="/" class="home-link router-link-exact-active router-link-active"><!----> <span class="site-name">Flow &amp; TypeScript</span></a> <div class="links" style="max-width:nullpx;"><div class="search-box"><input aria-label="Search" autocomplete="off" spellcheck="false" value=""> <!----></div> <nav class="nav-links can-hide"><div class="nav-item"><a href="/" class="nav-link router-link-exact-active router-link-active">首页</a></div><div class="nav-item"><a href="/flow/" class="nav-link">Flow</a></div><div class="nav-item"><a href="/typescript/" class="nav-link">TypeScript</a></div> <!----></nav></div></header> <div class="sidebar-mask"></div> <div class="sidebar"><nav class="nav-links"><div class="nav-item"><a href="/" class="nav-link router-link-exact-active router-link-active">首页</a></div><div class="nav-item"><a href="/flow/" class="nav-link">Flow</a></div><div class="nav-item"><a href="/typescript/" class="nav-link">TypeScript</a></div> <!----></nav>  <ul class="sidebar-links"><li><div class="sidebar-group first"><p class="sidebar-heading open"><span>Flow &amp; TypeScript</span> <!----></p> <ul class="sidebar-group-items"><li><a href="/#强类型和弱类型" class="sidebar-link">强类型和弱类型</a><ul class="sidebar-sub-headers"></ul></li><li><a href="/#动态类型和静态类型" class="sidebar-link">动态类型和静态类型</a><ul class="sidebar-sub-headers"></ul></li><li><a href="/#动态类型存在的问题" class="sidebar-link">动态类型存在的问题</a><ul class="sidebar-sub-headers"></ul></li><li><a href="/#静态类型带来的好处" class="sidebar-link">静态类型带来的好处</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/#你可以尽早发现bug和错误" class="sidebar-link">你可以尽早发现bug和错误</a></li><li class="sidebar-sub-header"><a href="/#提高代码的可读性" class="sidebar-link">提高代码的可读性</a></li><li class="sidebar-sub-header"><a href="/#减少了复杂的错误处理逻辑" class="sidebar-link">减少了复杂的错误处理逻辑</a></li><li class="sidebar-sub-header"><a href="/#促进更可靠的重构" class="sidebar-link">促进更可靠的重构</a></li><li class="sidebar-sub-header"><a href="/#增强ide的功能" class="sidebar-link">增强IDE的功能</a></li></ul></li><li><a href="/#静态类型存在的问题" class="sidebar-link">静态类型存在的问题</a><ul class="sidebar-sub-headers"></ul></li><li><a href="/#如何在javascript开发中使用静态类型" class="sidebar-link">如何在JavaScript开发中使用静态类型</a><ul class="sidebar-sub-headers"></ul></li></ul></div></li></ul> </div> <div class="page"> <div class="content"><h1 id="flow-typescript"><a href="#flow-typescript" aria-hidden="true" class="header-anchor">#</a> Flow &amp; TypeScript</h1> <blockquote><p><code>JavaScript</code>是一种弱类型的语言, 且<code>JavaScript</code>具有动态类型检查的特征。</p></blockquote> <h2 id="强类型和弱类型"><a href="#强类型和弱类型" aria-hidden="true" class="header-anchor">#</a> 强类型和弱类型</h2> <p>强类型语言是指当一个变量一旦被指定了数据类型之后，如果不经过强制转换，那么他那么它就永远都是这个类型的了。</p> <p>弱类型语言是指一个变量可以被赋值不同类型的数据。</p> <h2 id="动态类型和静态类型"><a href="#动态类型和静态类型" aria-hidden="true" class="header-anchor">#</a> 动态类型和静态类型</h2> <p>静态类型语言和动态类型语言得核心区别在于，静态类型语言(<code>statically-typed languages</code>)会在编译时(<code>compile time</code>)进行类型检查，而动态语言(<code>dynamically-typed</code>)则是在运行时进行类型检查(<code>runtime</code>)</p> <p>当出现一个类型错误时，静态类型检查和动态类型检查的差异就凸显出来了。在静态类型语言中，类型检查发生在编译阶段。在动态类型语言中，只有在程序运行了一次的时候错误才会被发现，也就是在运行时。</p> <h2 id="动态类型存在的问题"><a href="#动态类型存在的问题" aria-hidden="true" class="header-anchor">#</a> 动态类型存在的问题</h2> <p>由于<code>JavaScript</code>是动态类型语言，没有编译的环节，所有的类型检查是在代码运行时进行的，这就意味着我们书写的代码中的某些错误，只能在代码运行时在会被发现。</p> <p>比如下面这段代码：</p> <div class="language-js extra-class"><div class="highlight-lines"><br><br><br><br><br><div class="highlighted"> </div><br><br><br><br><br><br><br><br><br></div><pre class="language-js"><code><span class="token keyword">function</span> <span class="token function">greet</span><span class="token punctuation">(</span>o<span class="token punctuation">)</span><span class="token punctuation">{</span>
+  <span class="token comment">// 这句代码，我们尝试去调用了obj的sayHello方法</span>
+  <span class="token comment">// 在编码阶段，我们无法确定最终传进来的参数对象究竟是什么</span>
+  <span class="token comment">// 只有在代码实际运行阶段，执行到本句代码的时候</span>
+  <span class="token comment">// 才会发现传入的obj对象根本没有sayHello方法，最终在运行阶段报错</span>
+  o<span class="token punctuation">.</span><span class="token function">sayHello</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+
+<span class="token keyword">var</span> obj <span class="token operator">=</span> <span class="token punctuation">{</span>
+  name<span class="token punctuation">:</span> <span class="token string">'张学友'</span>
+<span class="token punctuation">}</span>
+
+<span class="token function">greet</span><span class="token punctuation">(</span>obj<span class="token punctuation">)</span><span class="token punctuation">;</span>
+</code></pre></div><p>再看下面这段代码：</p> <div class="language-js extra-class"><div class="highlight-lines"><br><br><br><br><br><br><br><br><br><br><br><br><div class="highlighted"> </div><br></div><pre class="language-js"><code><span class="token comment">/**
+ * 计算指定数值除以2的结果 我们期望用户传入的参数为数值类型
+ * @param {number} x  
+ */</span>
+<span class="token keyword">function</span> <span class="token function">divideBy2</span><span class="token punctuation">(</span>x<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token keyword">return</span> x <span class="token operator">/</span> <span class="token number">2</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+<span class="token comment">// 用户在调用的时候如果传入数值，则功能正常</span>
+<span class="token keyword">var</span> res <span class="token operator">=</span> <span class="token function">divideBy2</span><span class="token punctuation">(</span><span class="token number">4</span><span class="token punctuation">)</span><span class="token punctuation">;</span>  
+<span class="token comment">// 但是如果用户在调用的时候传入一个字符串，则会导致运行时错误</span>
+<span class="token comment">// (不报错，因为JavaScript解释器会尝试纠正错误，但是结果肯定不是我们预期的)</span>
+<span class="token keyword">var</span> res1 <span class="token operator">=</span> <span class="token function">divideBy2</span><span class="token punctuation">(</span><span class="token string">'Hello World'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</code></pre></div><p>当然，动态类型带来的并不只是问题，它的灵活程度和编码成本相较于静态类型的语言来讲是显而易见的。比如在Java和C#被类型限制的生活不能自理的同学，在JavaScript中你几乎可以放飞自我，为所欲为（Just a joke）。</p> <h2 id="静态类型带来的好处"><a href="#静态类型带来的好处" aria-hidden="true" class="header-anchor">#</a> 静态类型带来的好处</h2> <div style="text-align:center"><img src="/assets/img/whytypes.ba5c2625.png"></div> <h3 id="你可以尽早发现bug和错误"><a href="#你可以尽早发现bug和错误" aria-hidden="true" class="header-anchor">#</a> 你可以尽早发现bug和错误</h3> <p>静态类型检查允许我们在程序没有运行之前就可以确定我们所设定的确定性是否是对的。一旦有违反这些既定规则的行为，它能在运行之前就发现，而不是在运行时。</p> <p>因为类型检查器会在你编码的时候就告诉你错误，所以这也就比你把代码交付到客户手中才发现一些错误要更方面（或者说付出更少的开发与维护成本）。</p> <h3 id="提高代码的可读性"><a href="#提高代码的可读性" aria-hidden="true" class="header-anchor">#</a> 提高代码的可读性</h3> <p>在代码中加入类型系统，可以清晰的告诉用户功能所需要的数据是什么类型的，函数的返回值是什么类型的，提升代码的可读性。</p> <h3 id="减少了复杂的错误处理逻辑"><a href="#减少了复杂的错误处理逻辑" aria-hidden="true" class="header-anchor">#</a> 减少了复杂的错误处理逻辑</h3> <p>假设我们需要提供一个函数用来计算数组中所有数字的和</p> <div class="language-js extra-class"><pre class="language-js"><code><span class="token comment">// 最基本的代码如下：</span>
+<span class="token keyword">let</span>  <span class="token function-variable function">sum</span> <span class="token operator">=</span> arr <span class="token operator">=&gt;</span> <span class="token punctuation">{</span>
+  <span class="token keyword">let</span> result <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span>
+  arr<span class="token punctuation">.</span><span class="token function">forEach</span><span class="token punctuation">(</span>v <span class="token operator">=&gt;</span> <span class="token punctuation">{</span>
+    result <span class="token operator">+=</span> v<span class="token punctuation">;</span>
+  <span class="token punctuation">}</span><span class="token punctuation">)</span>
+  <span class="token keyword">return</span> result<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+<span class="token comment">// 可是上面的代码对于可能出现的异常没有做任何的处理</span>
+<span class="token comment">// 为了保证函数能够正常的运行，我们需要确保用户传入的参数为有效的数字数组</span>
+<span class="token comment">// 那么就需要这么做</span>
+<span class="token keyword">let</span>  <span class="token function-variable function">sum</span> <span class="token operator">=</span> arr <span class="token operator">=&gt;</span> <span class="token punctuation">{</span>
+  <span class="token keyword">if</span><span class="token punctuation">(</span><span class="token operator">!</span>arr<span class="token punctuation">)</span><span class="token punctuation">{</span>
+    <span class="token keyword">throw</span> <span class="token keyword">new</span> <span class="token class-name">Error</span><span class="token punctuation">(</span><span class="token string">&quot;Please give me arguments&quot;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
+
+  <span class="token keyword">if</span><span class="token punctuation">(</span><span class="token operator">!</span>Array<span class="token punctuation">.</span><span class="token function">isArray</span><span class="token punctuation">(</span>arr<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+    <span class="token keyword">throw</span> <span class="token keyword">new</span> <span class="token class-name">Error</span><span class="token punctuation">(</span><span class="token string">&quot;I need Array, what you've passed to me?&quot;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
+
+  <span class="token keyword">if</span><span class="token punctuation">(</span><span class="token operator">!</span>arr<span class="token punctuation">.</span><span class="token function">every</span><span class="token punctuation">(</span>v <span class="token operator">=&gt;</span> <span class="token keyword">typeof</span> v <span class="token operator">==</span> <span class="token string">'number'</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+    <span class="token keyword">throw</span> <span class="token keyword">new</span> <span class="token class-name">Error</span><span class="token punctuation">(</span><span class="token string">&quot;你传进来的数组里有奇怪的东西，我要的是数字！&quot;</span><span class="token punctuation">)</span>
+  <span class="token punctuation">}</span>
+
+  <span class="token keyword">let</span> result <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span>
+  arr<span class="token punctuation">.</span><span class="token function">forEach</span><span class="token punctuation">(</span>v <span class="token operator">=&gt;</span> <span class="token punctuation">{</span>
+    result <span class="token operator">+=</span> v<span class="token punctuation">;</span>
+  <span class="token punctuation">}</span><span class="token punctuation">)</span>
+  <span class="token keyword">return</span> result<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+</code></pre></div><p>如此我们便发现，如果没有类型系统，要处理类似的问题，代码显得非常繁琐。</p> <p>当有了类型系统之后，这样代码就不需要再写了，在我们学习完<code>flow</code>和<code>typescript</code>之后我们回过头来再看这个例子。</p> <h3 id="促进更可靠的重构"><a href="#促进更可靠的重构" aria-hidden="true" class="header-anchor">#</a> 促进更可靠的重构</h3> <p>假设要进行代码重构，我们需要将函数的某个参数进行修改，那么在之前修改的时候我们可能需要犹豫，因为指不定项目中某个地方调用没有进行修改，那么运行的时候会产生奇怪的问题。</p> <p>而有了静态类型检测之后，类型检测会自动告诉我们修改后的代码哪里存在问题，我们只需要按照提示修复即可。</p> <h3 id="增强ide的功能"><a href="#增强ide的功能" aria-hidden="true" class="header-anchor">#</a> 增强IDE的功能</h3> <p>静态类型会增强IDE的功能，提升开发效率。</p> <h2 id="静态类型存在的问题"><a href="#静态类型存在的问题" aria-hidden="true" class="header-anchor">#</a> 静态类型存在的问题</h2> <ol><li>会增加代码量</li> <li>需要花时间掌握类型</li> <li>可能会降低开发效率</li></ol> <h2 id="如何在javascript开发中使用静态类型"><a href="#如何在javascript开发中使用静态类型" aria-hidden="true" class="header-anchor">#</a> 如何在JavaScript开发中使用静态类型</h2> <ol><li>Flow: FaceBook的开源技术</li> <li>TypeScript： 微软公司开发的语言</li></ol></div> <div class="page-edit"><!----> <!----></div> <!----> </div> <!----></div></div>
+    <script src="/assets/js/3.1b2b870d.js" defer></script><script src="/assets/js/app.eba28600.js" defer></script>
+  </body>
+</html>

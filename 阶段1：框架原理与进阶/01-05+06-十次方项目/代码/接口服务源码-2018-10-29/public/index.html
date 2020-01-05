@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Document</title>
+  <link rel="stylesheet" href="https://unpkg.com/jcrop/dist/jcrop.css">
+  <script src="https://unpkg.com/jcrop"></script>
+</head>
+<body>
+  <img src="/public/img/760884f1db9abcf1f5af5845c264de81.jpg" id="target">
+  <script>
+    const stage = Jcrop.attach('target', {
+      // shadeColor: 'red',
+      // multi: true
+      aspectRatio: 1 / 1,
+      // canDrag: false
+    });
+    const rect = Jcrop.Rect.create(0,0,160,160);
+    const options = {};
+    stage.newWidget(rect,options);
+  </script>
+</body>
+</html>

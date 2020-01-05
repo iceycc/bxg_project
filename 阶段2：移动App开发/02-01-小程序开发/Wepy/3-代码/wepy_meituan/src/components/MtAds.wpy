@@ -1,0 +1,31 @@
+<template>
+  <view class="ads">
+    <repeat for="{{adArr}}" key="index">
+      <navigator>
+        <image mode="widthFix" src="{{item.img}}"></image>
+      </navigator>
+    </repeat>
+  </view>
+</template>
+
+<script>
+import wepy from 'wepy';
+export default class MtAds extends wepy.component {
+  props = {
+    adArr:Array
+  };
+}
+</script>
+
+<style lang="less">
+.ads{
+  display: flex;
+  flex-wrap: wrap;
+  navigator{
+    width: 49%;
+    image{
+      width: 100%;
+    }
+  }
+}
+</style>

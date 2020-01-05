@@ -1,0 +1,61 @@
+
+
+绘制一条直线
+1. 添加一个画布元素
+2. 工具集
+3. 使用工具集
+
+4. 绘制一个起始点
+5. 绘制一个终止点
+6. 用画笔描点
+
+moveTo(x,y) 定位一个开始坐标点
+lineTo(x,y) 在当前坐标基础绘制一条线到x,y
+
+
+给一个三角形
+1. 添加一个画布元素
+2. 工具集
+3. 绘制一个起始点
+4. 绘制二个点
+5. 绘制三个点
+6. 闭合路径，形成三角形
+7. 用画笔描点
+
+cxt.strokeStyle=''
+cxt.lineWidth=
+
+cxt.beginPath()
+
+文字的绘制
+1. fillText(text,x,y,[max]);
+   strokeText(text,x,y,[max]);
+
+2. font='字体样式的设置'
+
+3. textAlign='left center right'
+   texBaseline='top middle bottom'
+
+4. toDataURL('image/png',1)
+
+矩形的绘制
+1. 绘制路径 
+   rect(x,y,w,h)
+2. 绘制圆形
+   arc(x,y,r,sAngle,eAngle,clockwise);
+
+3. 绘制图片
+   drawImage(img,x,y)
+   drawImage(img,x,y,w,h)
+   drawImage(img,x1,y1,w1,h1,x2,y2,w2,h2)
+4. 案例
+   分为三个步骤
+   4.1 将随机的中奖信息绘制到画布中
+       
+
+   4.2 使用灰色的矩形覆盖中奖信息
+
+
+   4.3 使用鼠标滑擦区域实现刮刮的效果
+       在鼠标移动时不断绘制固定宽高的正方形
+       将绘制后的目标区域设置为透明

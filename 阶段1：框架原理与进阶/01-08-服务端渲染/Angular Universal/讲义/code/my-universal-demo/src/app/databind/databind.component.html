@@ -1,0 +1,10 @@
+<p>
+  {{msg}}
+</p>
+
+<p [title]="msg">测试属性绑定</p>
+
+<button (click)="sayHello('hello itcast!', $event)">sayHello</button>
+
+<!-- 利用ngModel指令实现双向数据绑定 -->
+<input type="text" [(ngModel)]="msg">

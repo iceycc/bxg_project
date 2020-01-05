@@ -1,0 +1,44 @@
+<style lang="less">
+</style>
+<template>
+   
+<view>
+  <view >{{msg}}</view>
+  <!-- 
+    引入两个组件  sonA sonB
+    sonA 触发事件 带上参数 index4
+    sonB 触发事件 带上参数 index4
+    
+   -->
+   <SonA></SonA>
+   <SonB></SonB>
+</view>
+</template> 
+
+<script>
+  import wepy from 'wepy'
+  import SonA from "../components/SonA";
+  import SonB from "../components/SonB";
+
+  export default class Index4 extends wepy.page {
+    config = {
+      navigationBarTitleText: '我的组件测试',
+       navigationBarTextStyle: 'white'
+    }; 
+    data={
+      msg:""
+    }
+    events={
+      showMsg(source){
+          this.msg=source+"呼唤我了";
+      }
+    }
+    methods={
+     
+    }
+   components={
+    SonA,
+    SonB
+   }
+  }
+</script>

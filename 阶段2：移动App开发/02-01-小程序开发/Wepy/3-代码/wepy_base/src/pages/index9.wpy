@@ -1,0 +1,34 @@
+<style lang="less">
+</style>
+<template>
+
+  <view>
+
+  </view>
+</template> 
+
+<script>
+import wepy from 'wepy';
+
+export default class Index9 extends wepy.page {
+  config = { 
+    navigationBarTitleText: '我的组件测试',
+    navigationBarTextStyle: 'white'
+  };
+  methods = {};
+  onLoad() {
+    // 发送请求
+    wepy.request({
+      url: 'http://api.apiopen.top/searchAuthors',
+      data: {
+        name: '李白'
+      }
+    }).then(r=>{
+      console.log("index");
+      console.log(r);
+      console.log("index");
+    })
+  }
+  components = {};
+}
+</script>

@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <!-- 移动端开发 设置视口 -->
+    <meta name="viewport"
+        content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <!-- 编译完毕的 css文件 -->
+    <link rel="stylesheet" href="./css/index.css" />
+    <!-- 引入 swiper的 css -->
+    <link rel="stylesheet" href="./lib/swiper/swiper.min.css" />
+    <title>黑马商城</title>
+</head>
+
+<body>
+    <!-- 布局容器 -->
+    <div class="index-layout">
+        <!-- 顶部搜索栏 -->
+        <!--header>a[href='javascript:void(0)']{logo}+input[type='search']+a[href='javascript:void(0)']{登陆}-->
+        <header>
+            <a href="javascript:void(0)">黑买</a>
+            <input type="search" placeholder="请输入搜索的内容好吗？？">
+            <a href="javascript:void(0)">登陆</a>
+        </header>
+
+        <!-- 轮播图 -->
+        <!--.index-banner>ul.banner-imgs>li*8>a[href='javascript:void(0)']>img[src='img/l$.jpg']-->
+        <div class="index-banner swiper-container">
+            <!-- 图片结构 别忘记清除浮动-->
+            <ul class="banner-imgs clearfix swiper-wrapper">
+                <li class='swiper-slide'><a href="javascript:void(0)"><img src="img/l1.jpg" alt=""></a></li>
+                <li class='swiper-slide'><a href="javascript:void(0)"><img src="img/l2.jpg" alt=""></a></li>
+                <li class='swiper-slide'><a href="javascript:void(0)"><img src="img/l3.jpg" alt=""></a></li>
+                <li class='swiper-slide'><a href="javascript:void(0)"><img src="img/l4.jpg" alt=""></a></li>
+                <li class='swiper-slide'><a href="javascript:void(0)"><img src="img/l5.jpg" alt=""></a></li>
+                <li class='swiper-slide'><a href="javascript:void(0)"><img src="img/l6.jpg" alt=""></a></li>
+                <li class='swiper-slide'><a href="javascript:void(0)"><img src="img/l7.jpg" alt=""></a></li>
+                <li class='swiper-slide'><a href="javascript:void(0)"><img src="img/l8.jpg" alt=""></a></li>
+            </ul>
+            <!-- 如果需要分页器 -->
+            <div class="swiper-pagination"></div>
+        </div>
+
+        <!-- 导航区域 -->
+        <!--.index-nav>ul>li*8>a[href='javascript:void(0)']>img[src='./img/nav$-1.png']+p{分类查询}-->
+        <div class="index-nav">
+            <ul>
+                <li><a href="#" target="_self">
+                        <img src="./img/nav0.png" alt="">
+                        <p>分类查询</p>
+                    </a></li>
+                <li><a href="#" target="_self">
+                        <img src="./img/nav1.png" alt="">
+                        <p>分类查询</p>
+                    </a></li>
+                <li><a href="#" target="_self">
+                        <img src="./img/nav2.png" alt="">
+                        <p>分类查询</p>
+                    </a></li>
+                <li><a href="#" target="_self">
+                        <img src="./img/nav3.png" alt="">
+                        <p>分类查询</p>
+                    </a></li>
+                <li><a href="#" target="_self">
+                        <img src="./img/nav4.png" alt="">
+                        <p>分类查询</p>
+                    </a></li>
+                <li><a href="#" target="_self">
+                        <img src="./img/nav5.png" alt="">
+                        <p>分类查询</p>
+                    </a></li>
+                <li><a href="#" target="_self">
+                        <img src="./img/nav6.png" alt="">
+                        <p>分类查询</p>
+                    </a></li>
+                <li><a href="#" target="_self">
+                        <img src="./img/nav7.png" alt="">
+                        <p>分类查询</p>
+                    </a></li>
+
+            </ul>
+        </div>
+
+        <!-- 主体内容区域 -->
+        <!--.index-content>section*4>.top+.bottom-->
+        <div class="index-content">
+            <!-- 秒杀区域 -->
+            <section class='second-kill'>
+                <div class="top">
+                    <div class="left">
+                        <span></span>
+                        <span>掌上秒杀</span>
+                        <ul>
+                            <li>0</li>
+                            <li>0</li>
+                            <li>:</li>
+                            <li>0</li>
+                            <li>0</li>
+                            <li>:</li>
+                            <li>0</li>
+                            <li>0</li>
+                        </ul>
+                    </div>
+                    <div class="right">
+                        <a href="javascript:void(0)">更多&gt;</a>
+                    </div>
+                </div>
+                <div class="bottom">
+                    <!--ul>li*3>a[href='javascript:void(0)']>img[src='./img/detail01.jpg']+p{¥10.00}+p{¥100.00}-->
+                    <ul>
+                        <li><a href="javascript:void(0)">
+                                <img src="./img/detail01.jpg" alt="">
+                                <p>¥10.00</p>
+                                <p>¥100.00</p>
+                            </a></li>
+                        <li><a href="javascript:void(0)">
+                                <img src="./img/detail01.jpg" alt="">
+                            </a>
+                            <p>¥10.00</p>
+                            <p>¥100.00</p>
+                        </li>
+                        <li><a href="javascript:void(0)">
+                                <img src="./img/detail01.jpg" alt="">
+                                <p>¥10.00</p>
+                                <p>¥100.00</p>
+                            </a></li>
+                    </ul>
+                </div>
+            </section>
+            <!-- 黑马超市区域 -->
+            <section>
+                <div class="top">
+                    <h2>黑马超市</h2>
+                </div>
+                <div class="bottom clearfix">
+                    <!--a*3[href='javascript:void(0)']>img[src='./img/cp$.jpg']-->
+                    <a class='bd-r fl' href="javascript:void(0)"><img src="./img/cp1.jpg" alt=""></a>
+                    <a class='bd-b fr' href="javascript:void(0)"><img src="./img/cp2.jpg" alt=""></a>
+                    <a class='fr' href="javascript:void(0)"><img src="./img/cp3.jpg" alt=""></a>
+                </div>
+            </section>
+            <section>
+                <div class="top">
+                    <h2>黑马超市</h2>
+                </div>
+                <div class="bottom clearfix">
+                    <a class='bd-l white fr' href="javascript:void(0)"><img src="./img/cp4.jpg" alt=""></a>
+                    <a class='bd-b white fl' href="javascript:void(0)"><img src="./img/cp5.jpg" alt=""></a>
+                    <a class='fl' href="javascript:void(0)"><img src="./img/cp6.jpg" alt=""></a>
+                </div>
+            </section>
+            <section>
+                <div class="top">
+                    <h2>黑马超市</h2>
+                </div>
+                <div class="bottom clearfix">
+                    <a class='bd-r fl ' href="javascript:void(0)"><img src="./img/cp1.jpg" alt=""></a>
+                    <a class='bd-b fr ' href="javascript:void(0)"><img src="./img/cp2.jpg" alt=""></a>
+                    <a class='fr' href="javascript:void(0)"><img src="./img/cp3.jpg" alt=""></a>
+                </div>
+            </section>
+        </div>
+        <!-- 底部tabbar -->
+        <img class='tabbar' src="./img/tabbar.png" alt="">
+    </div>
+    <!-- 导入 swiper的 js -->
+    <script src="./lib/swiper/swiper.min.js"></script>
+    <!-- 初始化swiper即可 -->
+    <!-- 初始化swiper 
+    http://www.swiper.com.cn/
+-->
+    <script>
+        // 初始化swiper
+        var mySwiper = new Swiper('.swiper-container', {
+
+            // 无限 
+            loop: true,
+
+            // 如果需要分页器
+            pagination: '.swiper-pagination',
+        })
+        // 倒计时
+        function countTime() {
+            // 总时间
+            var totalTime = 5 * 60 * 60;
+            // var totalTime = 5;
+            // 修改的dom元素
+            var liLists = document.querySelectorAll('.second-kill .top li');
+            // 定时器
+            var interId = setInterval(function () {
+                totalTime--;
+                if (totalTime < 0) {
+                    clearInterval(interId);
+                    // alert('没有抢到,下次继续哦 ^_^');
+                    return;
+                }
+                // 格式化为时分秒
+                var hour = Math.floor(totalTime / 3600);
+                var minute = Math.floor(totalTime % 3600 / 60);
+                var second = totalTime % 60;
+                // console.log(hour + '|' + minute + '|' + second);
+
+                // 设置给dom元素
+                // 小时的十位
+                liLists[0].innerHTML = Math.floor(hour / 10);
+                // 小时的个位
+                liLists[1].innerHTML = hour % 10;
+                // 分的十位
+                liLists[3].innerHTML = Math.floor(minute / 10);
+                // 分的个位
+                liLists[4].innerHTML = minute % 10;
+                // 秒的十位
+                liLists[6].innerHTML = Math.floor(second / 10);
+                // 秒的个位
+                liLists[7].innerHTML = second % 10;
+            }, 10)
+
+        }
+        // 执行倒计时
+        countTime();
+    </script>
+</body>
+
+</html>

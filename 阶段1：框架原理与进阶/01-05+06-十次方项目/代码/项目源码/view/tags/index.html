@@ -1,0 +1,35 @@
+{% extends "../layout/layout.html" %}
+
+{% block head %}
+<link rel="stylesheet" type="text/css" href="/public/css/page-sj-qa-allTag.css" /> 
+{% endblock %}
+
+{% block main %}
+<div class="wrapper all-tags">
+  <div class="tags-head">
+    <h2 class="tag-title">标签</h2>
+    <p class="tag-second">标签是最有效的内容组织形式，正确的使用标签能更快的发现和解决你的问题。</p>
+  </div>
+  <div class="alltags-card">
+    <ul class="yui3-g tags-list" style="display:block;">
+      {% for item in tags %}
+      <li class="tag-item yui3-u-1-4">
+        <div class="inner">
+          <h5 class="title"><a href="/?tags={{ item.name }}" target="_blank">{{ item.name }}</a></h5>
+          <div class="guanzhu">
+            <span class="guannum"><i class="num">{{ item.postCount }}</i>个问题</span>
+            -
+            <span class="guannum"><i class="num">{{ item.followers.length }}</i>人关注</span>
+          </div>
+        </div>
+      </li>
+      {% endfor %}
+    </ul>
+    {% from "../components/pagination.html" import pagination %}
+    {{ pagination(_limit=_limit, _page=_page, lastPage=lastPage) }}
+  </div>
+</div>
+{% endblock %}
+
+{% block script %}
+{% endblock %}

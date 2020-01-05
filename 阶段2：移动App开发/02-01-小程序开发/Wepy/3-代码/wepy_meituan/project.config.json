@@ -1,0 +1,15 @@
+{
+	"description": "A WePY project",
+	"setting": {
+		"urlCheck": false,
+		"es6": false,
+		"postcss": false,
+		"minified": false,
+		"newFeature": true
+	},
+	"compileType": "miniprogram",
+	"appid": "wx2dae2a0d5b21ea67",
+	"projectname": "meituan",
+	"miniprogramRoot": "dist/",
+	"condition": {}
+}

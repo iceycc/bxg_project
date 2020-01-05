@@ -1,0 +1,160 @@
+<style lang="less">
+</style>
+<template>
+  <view class="container">
+    <Location hidden="{{true}}" :city.sync="city"></Location>
+    <MtSwiper hidden="{{true}}" :swiperArr.sync="swiperArr"></MtSwiper>
+    <Nav hidden="{{true}}" :navArr.sync="navArr"></Nav>
+    <navigator hidden="{{true}}" style="margin-top:10px;" class="ad">
+      <image mode="widthFix" style="width:100%;" src="/img/jiangli.png"></image>
+    </navigator>
+    <GroupBook hidden="{{true}}" :groupArr.sync="groupArr"></GroupBook>
+    <MtAds :adArr.sync="adArr"></MtAds>
+    <Shop :shopArr.sync="shopArr"></Shop>
+  </view>
+</template>
+
+<script>
+import wepy from 'wepy';
+import Location from '../components/Location';
+import MtSwiper from '../components/MtSwiper';
+import Nav from '../components/Nav';
+import GroupBook from '../components/GroupBook';
+import MtAds from '../components/MtAds';
+import Shop from '../components/Shop';
+import QQMapWX from '../qqmap-wx-jssdk1.0/qqmap-wx-jssdk.js';
+let demo = new QQMapWX({
+  key: 'FQLBZ-474AU-DGTVG-2DOZU-STEE3-JQFL4' // 必填
+});
+export default class Index extends wepy.page {
+  data = {
+    city: '获取中',
+    // 轮播图
+    swiperArr: [],
+    // 分类数据
+    navArr: [],
+    // 首页拼团
+    groupArr: [],
+    // 广告数组
+    adArr: [],
+    // 商店
+    shopArr: []
+  };
+  config = {
+    navigationBarTitleText: 'test'
+  };
+  onLoad() {
+    // console.log('onLoad');
+    this.getLocation();
+    this.getSwiperData();
+    this.getNavs();
+    this.getGroups();
+    this.getAds();
+    // this.getShops();
+  }
+  // 获取地理位置
+  async getLocation() {
+    // 获取当前的经纬度
+    let point = await wepy.getLocation();
+    // 城市的名称 在异步中修改了数据
+    this.city = (await this.reverseGeocoder({
+      latitude: point.latitude,
+      longitude: point.longitude
+    })).result.address_component.city;
+    // this.$apply();
+    // console.log(this.city);
+
+    // 获取 猜你喜欢接口里面的经纬度的数组
+    let shopArr = (await wepy.request({
+      url: 'http://api.meituan.com/index/like'
+    })).data;
+
+    // 获取经纬度数组
+    let pointArr = shopArr.map((v, i) => {
+      return { latitude: v.distance.lat, longitude: v.distance.lng };
+    });
+
+    // 调用腾讯地图的api 来计算距离
+    let elementsArr= (await this.calculateDistance({ latitude: point.latitude, longitude: point.longitude },pointArr)).result.elements
+    // console.log(elementsArr);
+
+    this.shopArr=shopArr.map((v,i)=>{
+      v.dis=elementsArr[i].distance;
+      return v;
+    })
+    this.$apply();
+  }
+  // 调用腾讯地图将经纬度转城市
+  reverseGeocoder(point) {
+    return new Promise((resolve, reject) => {
+      demo.reverseGeocoder({
+        location: {
+          latitude: point.latitude,
+          longitude: point.longitude
+        },
+        success: function(res) {
+          resolve(res);
+        }
+      });
+    });
+  }
+  // 计算距离
+  calculateDistance(from, toArr) {
+    return new Promise((resolve, reject) => {
+      demo.calculateDistance({
+        from: from,
+        to: toArr,
+        success(result) {
+          resolve(result);
+        }
+      });
+    });
+  }
+  // 获取轮播图
+  async getSwiperData() {
+    this.swiperArr = (await wepy.request({
+      url: 'http://api.meituan.com/index/swiper'
+    })).data;
+    // console.log("swiperArr");
+    // console.log(this.swiperArr);
+  }
+  // 获取首页导航数据
+  async getNavs() {
+    this.navArr = (await wepy.request({
+      url: 'http://api.meituan.com/index/entry'
+    })).data;
+  }
+  // 获取首页拼团数据
+  async getGroups() {
+    this.groupArr = (await wepy.request({
+      url: 'http://api.meituan.com/index/pingtuan'
+    })).data;
+    // console.log('groupArr');
+    // console.log(this.groupArr);
+  }
+  // 获取广告组
+  async getAds() {
+    this.adArr = (await wepy.request({
+      url: 'http://api.meituan.com/index/ad'
+    })).data;
+    //  console.log('adArr');
+    // console.log(this.adArr);
+  }
+  // 获取 商店信息
+  async getShops() {
+    this.shopArr = (await wepy.request({
+      url: 'http://api.meituan.com/index/like'
+    })).data;
+    // console.log('shopArr');
+    // console.log(this.shopArr);
+  }
+  components = {
+    Location,
+    MtSwiper,
+    GroupBook,
+    MtAds,
+    Shop,
+    Nav
+  };
+}
+</script>

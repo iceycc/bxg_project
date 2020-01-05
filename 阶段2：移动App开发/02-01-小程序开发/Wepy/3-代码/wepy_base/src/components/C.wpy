@@ -1,0 +1,17 @@
+<template>
+  <view @tap.stop="myTap1" >C:</view>
+</template>
+
+<script>
+import wepy from 'wepy';
+export default class C extends wepy.component {
+  methods={
+    myTap1(){
+      console.log("c组件的tap");
+    }
+  }
+}
+</script>
+
+<style>
+</style>

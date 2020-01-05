@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <canvas id="cvs" style="border: solid 1px #ccc"></canvas>
+
+    <script type="text/javascript">
+        //获取画布元素
+        var cvs=document.getElementById("cvs");
+        //获取工具集
+        var cxt=cvs.getContext("2d");
+
+        //定位开始点
+        cxt.moveTo(30,30);
+
+        //拖动并结束点
+        cxt.lineTo(90,30)  //保存内存
+
+        //绘制点
+        cxt.stroke();
+    </script>
+</body>
+</html>

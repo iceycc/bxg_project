@@ -1,0 +1,135 @@
+/*
+ * 课程详情banner部分样式
+ */
+ .article_banner {
+    position: relative;
+    .banner_bg {
+        width: 100%;
+        height: 240px;
+        background: url(/static/img/widget-bannerBg.png) top center no-repeat;
+        background-size: cover;
+    }
+    .banner_info {
+        margin: 20px 0;
+        position: absolute;
+        width: 80%;
+        max-width: 1170px;
+        color: #fff;
+        top: 0px;
+        left: 50%;
+        transform: translateX(-50%);       
+        .banner_left {            
+            float: left;
+            .tit {
+                font-size: 32px;
+            }
+            .pic {
+                font-size: 16px;
+                .new_pic {
+                    color: #ca50f8;
+                  }
+                .old_pic {
+                    color: #999;
+                    text-decoration: line-through;
+                }
+            }
+            .info {
+                margin-top: 15px;
+                a {
+                    background: #00a4ff;
+                    color: #fff;
+                    font-size: 18px;
+                    display: inline-block;
+                    padding: 5px 20px;
+                    position: relative;
+                    top: -10px;
+                  }
+                span {
+                    display: inline-block;
+                    padding: 0px 20px;
+                    font-size: 18px;
+                    border-right: solid 1px #787d82;
+                    em {
+                        font-size: 14px;
+                        display: block;
+                      }
+                    &:last-child {
+                        border: none;
+                    }
+                }
+
+            }
+          }
+          .banner_rit {
+            float: right;
+            .vid_act {
+                color: #dadada;
+                cursor: pointer;
+                .active {
+                    color: #00a4ff;
+                  }
+                span {
+                    display: inline-block;
+                    width: 49%;
+                    line-height: 15px;
+                    text-align: center;
+                    margin: 15px 0;
+                    &:nth-child(1) {
+                        border-right: solid 1px #787d82;
+                      }
+                  }
+              }
+              
+            .vid_act i {
+                margin: 0 5px;
+                position: relative;
+                top: 1px;
+              }
+          }
+    }
+  }
+  
+  .active {
+    color: #00a4ff;
+  }
+
+  h1, h2, h3, h4, h5, h6, p {
+    padding: 0px;
+    margin: 0;
+    line-height: 200%;
+  }
+
+
+/*
+* 课程详情、课程大纲、授课老师、常见问题 布局 
+*/ 
+
+.article_cont {
+    position: relative;
+     width: 100%;
+    max-width: 1170px;
+    margin: 0 auto;
+    overflow: hidden;
+  }
+
+.tit_list {
+font-size: 16px;
+margin: 20px 0;
+}
+
+.tabp{
+    padding:0px 10px;
+}
+
+/*课程大纲*/ 
+.sesionUl{
+    div{
+        margin-top:10px; 
+    }
+    a{
+        color:#0094ff;        
+        &:hover{
+            color:yellowgreen;
+        }
+    }
+}

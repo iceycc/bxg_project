@@ -1,0 +1,17 @@
+.login-wrapper {
+  height: 100%;
+  background-image: url(/src/assets/login-bg.jpg);
+  background-size: cover;
+}
+
+.login-form {
+  max-width: 300px;
+}
+
+.login-form-forgot {
+  float: right;
+}
+
+.login-form-button {
+  width: 100%;
+}

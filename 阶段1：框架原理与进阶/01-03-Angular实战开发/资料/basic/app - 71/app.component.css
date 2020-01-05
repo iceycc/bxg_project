@@ -1,0 +1,9 @@
+.app {
+  overflow: hidden;
+  background-color: skyblue;
+}
+
+.actived {
+  color: #f00;
+  font-size: 30px;
+}

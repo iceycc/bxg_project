@@ -1,0 +1,76 @@
+<style lang="less">
+</style>
+<template>
+  <view class="container">
+    {{msg1}}
+    <view @tap="tap1handl">
+      {{person1.name}}:{{person1.height}}
+    </view>
+    <view>
+      {{male}}:{{male1}}：{{male2}}
+    </view>
+  </view>
+</template> 
+
+<script>
+  import wepy from 'wepy'
+
+  export default class Index extends wepy.page {
+    config = {
+      navigationBarTitleText: '首页',
+       navigationBarTextStyle: 'white'
+    };
+    data={
+      msg1:"wepy",
+      person1:{
+        name:"小红",
+        height:180
+      },
+      male:false 
+    }
+    myData="hello";
+    showMsg(msg){
+      console.log(msg);
+    }
+    computed={
+      male1(){
+        if(this.male){
+          return "公";
+        }else{
+          return "母";
+        }
+      },
+      male2(){
+        if(this.male){
+          return "男";
+        }else{
+          return "女";
+        }
+      }
+    }
+    watch={
+      person1(newValue,oldValue){
+        this.person1.name="小兰";
+        console.log(newValue,oldValue);
+      }
+    }
+    methods={
+      tap1handl(){
+        // console.log(123);
+        this.person1.height=200;
+      }
+    }
+    onLoad() {
+      // console.log('onLoad')
+
+      // setInterval(()=>{
+      //   this.msg1=Date.now();
+      //   console.log( this.msg1);
+      //   // 在异步中想要视图里面的数据发生改变 必须要手动的调用
+      //   this.$apply();
+      // },1000);
+
+      this.showMsg(this.myData);
+    }
+  }
+</script>

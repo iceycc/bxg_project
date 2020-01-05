@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <!-- 上述3个meta标签*必须*放在最前面，任何其他内容都*必须*跟随其后！ -->
+  <meta name="description" content="" />
+  <meta name="author" content="" />
+  <link rel="icon" href="/public/img/asset-favicon.ico" />
+  <title>社交-问答</title>
+  <!-- 页面 css js -->
+  <link rel="stylesheet" type="text/css" href="/public/plugins/normalize-css/normalize.css" />
+  <link rel="stylesheet" type="text/css" href="/public/plugins/yui/cssgrids-min.css" />
+  <link rel="stylesheet" href="http://g.alicdn.com/sj/dpl/1.5.1/css/sui.min.css">
+  <link rel="stylesheet" type="text/css" href="/public/plugins/sui/sui-append.min.css" />
+  <link rel="stylesheet" type="text/css" href="/public/plugins/font-awesome/css/font-awesome.min.css" />
+  <link rel="stylesheet" type="text/css" href="/public/css/widget-base.css" />
+  <link rel="stylesheet" type="text/css" href="/public/css/widget-head-foot.css" />
+  <link rel="stylesheet" href="/public/css/iconfont.css">
+  <!-- 填充头部内容，例如 css -->
+  {% block head %}
+  {% endblock %}
+</head>
+
+<body>
+  <div class="wrapper">
+    {% include "./header.html" %}
+  </div>
+  <!-- 将来页面要往这里填充具体的页面内容 -->
+  {% block main %}
+  {% endblock %}
+  {% include "./footer.html" %}
+  <script src="/node_modules/jquery/dist/jquery.js"></script>
+  <script src="http://g.alicdn.com/sj/dpl/1.5.1/js/sui.min.js"></script>
+  <script src="/public/js/common.js"></script>
+  <!-- 填充 script 脚本 -->
+  {% block script %}
+  {% endblock %}
+</body>
+
+</html>

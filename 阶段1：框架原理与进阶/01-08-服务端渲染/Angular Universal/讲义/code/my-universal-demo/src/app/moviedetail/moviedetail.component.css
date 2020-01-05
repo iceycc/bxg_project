@@ -1,0 +1,11 @@
+.detail {
+  width: 40%;
+  margin: 0 auto;
+  padding: 20px;
+  box-sizing: border-box;
+  box-shadow: 0 0 10px #bbb;
+  margin-top: 60px;
+}
+.detail-box {
+  text-align: center;
+}

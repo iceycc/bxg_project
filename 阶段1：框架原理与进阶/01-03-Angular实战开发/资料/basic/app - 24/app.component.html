@@ -1,0 +1,12 @@
+<div>
+  <!-- 给 ngFor 指令添加 trackBy 提升渲染性能 -->
+
+  <!-- <p *ngFor="let item of colors; trackBy: trackById">{{ item.name }}</p>
+  <button (click)="fetchColors()">重新获取数据</button> -->
+
+  <!-- 演示普通数据有没有性能问题 -->
+  <button (click)="fetchData()">重新获取数据</button>
+  <ul>
+    <li *ngFor="let item of colors">{{ item }}</li>
+  </ul>
+</div>

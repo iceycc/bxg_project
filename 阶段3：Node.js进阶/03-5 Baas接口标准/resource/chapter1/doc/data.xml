@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<root>
+  <book>
+    <title>浪潮之巅</title>
+    <author>吴军</author>
+    <description>科技公司兴衰史</description>
+  </book>
+  <book>
+    <title>明朝那些事</title>
+    <author>当年明月</author>
+    <description>有趣的历史故事</description>
+  </book>
+</root>

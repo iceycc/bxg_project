@@ -1,0 +1,28 @@
+{
+  "name": "demo2",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start:babel": "nodemon --exec babel-node ./src/index.js",
+    "test": "mocha --require @babel/register",
+    "test:watch": "mocha --require @babel/register --watch",
+    "report": "mocha --require @babel/register --reporter mochawesome",
+    "build": "babel src --out-dir ./dist --source-maps",
+    "serve": "node ./dist/index.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@babel/cli": "^7.5.0",
+    "@babel/core": "^7.5.0",
+    "@babel/node": "^7.5.0",
+    "@babel/preset-env": "^7.5.0",
+    "@babel/register": "^7.4.4",
+    "chai": "^4.2.0",
+    "mocha": "^6.1.4",
+    "mochawesome": "^4.0.1",
+    "nodemon": "^1.19.1"
+  }
+}

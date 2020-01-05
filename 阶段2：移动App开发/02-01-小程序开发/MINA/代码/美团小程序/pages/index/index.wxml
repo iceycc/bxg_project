@@ -1,0 +1,90 @@
+<!-- 搜索框 -->
+<view class="search">
+  <view class="sear_left">
+    <text>{{city}}</text>
+    <text class="icon iconfont2 icon-xiangxia"></text>
+  </view>
+  <view class="sear_right">
+    <input type="text" placeholder="请输入商家的名称" />
+    <text class="icon iconfont2 icon-sousuo"></text>
+  </view>
+</view>
+
+<!-- 轮播图 -->
+<view class="mt_swiper">
+  <swiper indicator-dots="{{true}}" autoplay="{{true}}">
+    <swiper-item  wx:for="{{swiperArr}}" wx:key="{{index}}" >
+      <navigator>
+        <image src="{{item.img_src}}"></image>
+      </navigator>
+    </swiper-item>
+  </swiper>
+</view>
+
+
+<!-- 首页导航 -->
+<view class="mt_nav">
+  <navigator wx:for="{{navArr}}" wx:key="{{index}}">
+    <view class="icon iconfont {{item.icon}}"></view>
+    <view class="title">{{item.text}}</view>
+  </navigator>
+</view>
+
+<!-- 签到 -->
+<navigator class="sign">
+  <image mode="widthFix" src="/img/jiangli.png"></image>
+</navigator>
+
+
+<!-- 拼团数据 -->
+<view class="group_book">
+  <view class="gb_title">
+    <text>好货拼团</text>
+    <text>全部 ></text>
+  </view>
+  <view class="gb_content">
+    <navigator wx:for="{{bookArr}}" wx:key="{{index}}">
+      <image mode="widthFix" src="{{item.img_src}}"></image>
+      <view class="brand_name">{{item.brand_name}}</view>
+      <view class="price">
+        <text class="new_price">{{item.price}}</text>
+        <text class="old_price">{{item.old_price}}</text>
+      </view>
+    </navigator>
+  </view>
+</view>
+
+<!-- 广告数组 -->
+<view class="ads">
+  <navigator wx:for="{{advArr}}" wx:key="{{index}}">
+    <image mode="widthFix" src="{{item.img}}"></image>
+  </navigator>
+</view>
+
+
+
+<!-- 猜你喜欢 -->
+<view class="guess">
+  <view class="guess_title">
+    —— 猜你喜欢 ——
+  </view>
+  <view class="guess_content">
+    <navigator wx:for="{{guessArr}}" wx:key="{{index}}">
+      <view class="item_left">
+        <image mode="widthFix" src="{{item.img_src}}"></image>
+      </view>
+      <view class="item_right">
+        <view class="shop_info">
+          <text class="shop_name">{{item.brand_name}}</text>
+          <text class="shop_dis">{{item.dis}}m</text>
+        </view>
+        <view class="goods_info">{{item.desc}}</view>
+        <view class="goods_sell">
+          <text class="goods_price">￥{{item.price}}</text>
+          <text class="goods_nums">已售{{item.count}}</text>
+        </view>
+        <view class="goods_dis"><text>{{item.discount}}</text></view>
+      </view>
+    </navigator>
+  </view>
+</view>

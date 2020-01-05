@@ -1,0 +1,22 @@
+<template>
+  <view>{{msg}}</view>
+</template>
+
+<script>
+import wepy from 'wepy';
+export default class Cat extends wepy.component {
+  data = {
+    msg: ''
+  };
+  // events 对象 存放是 组件事件相关的代码
+  events = {
+    say() {
+      console.log('猫叫了');
+      this.msg = '猫叫';
+    }
+  };
+}
+</script>
+
+<style>
+</style>

@@ -1,0 +1,24 @@
+<template>
+  <view @tap="myTap">A:</view>
+</template>
+
+<script>
+import wepy from 'wepy';
+import B from "./B";
+export default class A extends wepy.component {
+ 
+  methods={
+   myTap(){
+    //  直接调用b组件中的方法 show
+    // this.$invoke("要调用的组件的路径","方法名",参数);
+    this.$invoke("B","show","----A的调用");
+   }
+  }
+  components={
+    B
+  }
+}
+</script>
+
+<style>
+</style>

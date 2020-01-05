@@ -1,0 +1,13 @@
+<div class="todos">
+  <header>
+    <input [(ngModel)]="todoName" type="text">
+    <button (click)="addTodo()">添加</button>
+  </header>
+  <ul>
+    <li *ngFor="let todo of todos; trackBy: trackByTodo">
+      <span (click)="changeTodo(todo.id)" [class.done]="todo.done">{{ todo.name }}</span>
+      &nbsp;&nbsp;&nbsp;&nbsp;
+      <a href="#" (click)="delTodo($event, todo.id)">x</a>
+    </li>
+  </ul>
+</div>

@@ -1,0 +1,68 @@
+html, body {
+    margin: 0;
+    height: 100%;
+}
+
+canvas {
+    display: block;
+}
+
+/*移动按钮的样式*/
+#joystick {
+    position: fixed;
+    left: 50px;
+    bottom: 50px;
+    width: 120px;
+    height: 120px;
+    background: #ccc;
+    border-radius: 50%;
+    background: url("./images/joystick.png") center no-repeat;
+    background-size: 100% 100%;
+}
+
+#joystick .bar-wrap {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 0;
+    height: 0;
+    transform: translate(-50%, -50%);
+}
+
+#joystick .bar-wrap .bar {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    background: blue;
+    top: 0;
+    left: 0;
+    transform: translate(-50%, -50%);
+    background: url("./images/joystick-bar.png") center no-repeat;
+    background-size: 100% 100%;
+}
+
+#joystick .bar-wrap .bar.active {
+    margin-top: -50px;
+}
+
+/*技能按键按钮样式*/
+#skills{
+    position: fixed;
+    bottom: 0;
+    right:0;
+}
+
+#skills .bar:active{
+    transform: translateY(1px);
+}
+/*普通攻击按钮样式*/
+#skills .attack{
+    width:80px;
+    height:80px;
+    position: absolute;
+    right:50px;
+    bottom:50px;
+    background: url("./images/attack.png") center no-repeat;
+    background-size: 100% 100%;
+    border-radius: 50%;
+}

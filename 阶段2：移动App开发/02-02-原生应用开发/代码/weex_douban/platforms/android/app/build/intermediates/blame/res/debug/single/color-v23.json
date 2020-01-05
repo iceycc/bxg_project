@@ -1,0 +1,42 @@
+[
+    {
+        "merged": "C:\\code\\weex_douban\\platforms\\android\\app\\build\\intermediates\\res\\merged\\debug\\color-v23\\design_tint_password_toggle.xml",
+        "source": "C:\\code\\weex_douban\\platforms\\android\\app\\build\\intermediates\\exploded-aar\\com.android.support\\design\\26.1.0\\res\\color-v23\\design_tint_password_toggle.xml"
+    },
+    {
+        "merged": "C:\\code\\weex_douban\\platforms\\android\\app\\build\\intermediates\\res\\merged\\debug\\color-v23\\abc_tint_switch_track.xml",
+        "source": "C:\\code\\weex_douban\\platforms\\android\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\26.1.0\\res\\color-v23\\abc_tint_switch_track.xml"
+    },
+    {
+        "merged": "C:\\code\\weex_douban\\platforms\\android\\app\\build\\intermediates\\res\\merged\\debug\\color-v23\\abc_btn_colored_borderless_text_material.xml",
+        "source": "C:\\code\\weex_douban\\platforms\\android\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\26.1.0\\res\\color-v23\\abc_btn_colored_borderless_text_material.xml"
+    },
+    {
+        "merged": "C:\\code\\weex_douban\\platforms\\android\\app\\build\\intermediates\\res\\merged\\debug\\color-v23\\abc_btn_colored_text_material.xml",
+        "source": "C:\\code\\weex_douban\\platforms\\android\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\26.1.0\\res\\color-v23\\abc_btn_colored_text_material.xml"
+    },
+    {
+        "merged": "C:\\code\\weex_douban\\platforms\\android\\app\\build\\intermediates\\res\\merged\\debug\\color-v23\\abc_tint_seek_thumb.xml",
+        "source": "C:\\code\\weex_douban\\platforms\\android\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\26.1.0\\res\\color-v23\\abc_tint_seek_thumb.xml"
+    },
+    {
+        "merged": "C:\\code\\weex_douban\\platforms\\android\\app\\build\\intermediates\\res\\merged\\debug\\color-v23\\abc_color_highlight_material.xml",
+        "source": "C:\\code\\weex_douban\\platforms\\android\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\26.1.0\\res\\color-v23\\abc_color_highlight_material.xml"
+    },
+    {
+        "merged": "C:\\code\\weex_douban\\platforms\\android\\app\\build\\intermediates\\res\\merged\\debug\\color-v23\\abc_tint_btn_checkable.xml",
+        "source": "C:\\code\\weex_douban\\platforms\\android\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\26.1.0\\res\\color-v23\\abc_tint_btn_checkable.xml"
+    },
+    {
+        "merged": "C:\\code\\weex_douban\\platforms\\android\\app\\build\\intermediates\\res\\merged\\debug\\color-v23\\abc_tint_spinner.xml",
+        "source": "C:\\code\\weex_douban\\platforms\\android\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\26.1.0\\res\\color-v23\\abc_tint_spinner.xml"
+    },
+    {
+        "merged": "C:\\code\\weex_douban\\platforms\\android\\app\\build\\intermediates\\res\\merged\\debug\\color-v23\\abc_tint_default.xml",
+        "source": "C:\\code\\weex_douban\\platforms\\android\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\26.1.0\\res\\color-v23\\abc_tint_default.xml"
+    },
+    {
+        "merged": "C:\\code\\weex_douban\\platforms\\android\\app\\build\\intermediates\\res\\merged\\debug\\color-v23\\abc_tint_edittext.xml",
+        "source": "C:\\code\\weex_douban\\platforms\\android\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\26.1.0\\res\\color-v23\\abc_tint_edittext.xml"
+    }
+]

@@ -1,0 +1,78 @@
+<style src="styles/base.css">
+</style>
+<style lang="less">
+@color: red;
+page {
+  background-color: aqua;
+  // color: @color;
+}
+</style>
+
+<script>
+import wepy from 'wepy';
+import 'wepy-async-function';
+export default class extends wepy.app {
+  constructor() {
+    super();
+    this.use('promisify');
+    // 开启拦截器
+    this.intercept('request', {
+      config(obj) {
+        obj.data.name1 = 'wepy';
+        return obj;
+      }, 
+      success(ret) {
+        console.log('success');
+        console.log(ret);
+        console.log('success');
+        return ret;
+      },
+      fail(ret) {
+        console.log('fail');
+        console.log(ret);
+        console.log('fail');
+        return ret;
+      },
+      complete(ret) {
+        console.log('complete');
+        console.log(ret);
+        console.log('complete');
+      }
+    });
+  }
+  config = {
+    pages: [
+       'pages/index10',
+       'pages/index9',
+      'pages/index8',
+      'pages/index7',
+      'pages/index6',
+      'pages/index5',
+      'pages/index4',
+      'pages/index3',
+      'pages/index2',
+      'pages/index'
+    ],
+    window: {
+      backgroundTextStyle: 'light',
+      navigationBarBackgroundColor: '#000',
+      navigationBarTitleText: 'WeChat',
+      navigationBarTextStyle: 'black'
+    }
+  };
+
+  onLaunch() {
+    // console.log('on launch');
+
+    let myPro = new Promise((resolve, reject) => {
+      setTimeout(() => {
+        resolve(123);
+      }, 2000);
+    });
+
+    myPro.then(r => {
+      console.log(r);
+    });
+  }
+}
+</script>

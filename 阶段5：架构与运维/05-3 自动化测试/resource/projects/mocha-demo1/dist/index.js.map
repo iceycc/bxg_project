@@ -1,0 +1,1 @@
+{"version":3,"sources":["../src/index.js"],"names":["addNum","a","b"],"mappings":";;;;;;;AAAA,SAASA,MAAT,CAAgBC,CAAhB,EAAmBC,CAAnB,EAAsB;AACpB,SAAOD,CAAC,GAAGC,CAAX;AACD","sourcesContent":["function addNum(a, b) {\n  return a + b\n}\n\nexport {\n  addNum\n}"],"file":"index.js"}

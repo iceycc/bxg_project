@@ -1,0 +1,17 @@
+<div>
+  <form [formGroup]="loginForm" (ngSubmit)="handleSubmit()">
+    <label>
+      用户名：
+      <input type="text" formControlName="username">
+    </label>
+
+    <label>
+      密码：
+      <input type="text" formControlName="password">
+    </label>
+
+    <p>
+      <button type="submit">提交表单</button>
+    </p>
+  </form>
+</div>

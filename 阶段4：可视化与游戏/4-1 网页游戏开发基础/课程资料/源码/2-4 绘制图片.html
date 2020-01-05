@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <canvas id="cvs" width="320" height="480" style="border: solid 1px #ccc"></canvas>
+
+    <script type="text/javascript">
+        //获取画布元素
+        var cvs=document.getElementById("cvs");
+        //获取工具集
+        var cxt=cvs.getContext("2d");
+
+        //先定义图片对象
+        var img=new Image();
+        img.src='img/dog.jpg';
+        img.onload=function(){
+            //绘制加载好的图片
+            //cxt.drawImage(this,10,10);
+            //绘制加载好的指定宽高的图片
+            //cxt.drawImage(this,10,10,133,200);
+             //绘制加载放大的图片
+             //                x1,y1,w1,h1, x2,y2,w2,h2
+            cxt.drawImage(this,120,120,100,100,10,10,300,300);
+        }
+    </script>
+</body>
+</html>

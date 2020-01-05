@@ -1,0 +1,1 @@
+{"version":3,"sources":["../src/index.js"],"names":["sayHello","console","log"],"mappings":";;;;;;;AAAA,IAAMA,QAAQ,GAAG,SAAXA,QAAW;AAAA,SAAM,aAAN;AAAA,CAAjB;;AAEAC,OAAO,CAACC,GAAR,CAAYF,QAAQ,EAApB;eAEeA,Q","sourcesContent":["const sayHello = () => \"Hello guys!\"\n\nconsole.log(sayHello())\n\nexport default sayHello"],"file":"index.js"}

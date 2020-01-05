@@ -1,0 +1,29 @@
+#box{
+    display: flex;
+    justify-content: space-around
+}
+#box > span{
+    border: 1px solid #555;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+}
+#box > span:nth-of-type(1){
+    background-color: red
+}
+#box > span:nth-of-type(2){
+    background-color: orange
+}
+#box > span:nth-of-type(3){
+    background-color: white
+}
+#box > span:nth-of-type(4){
+    background-color: green
+}
+#box > span:nth-of-type(5){
+    background-color: blue
+}
+span:hover{
+    opacity: 0.6;
+    cursor: pointer;
+}

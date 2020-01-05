@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <canvas id="cvs" style="border: solid 1px #ccc"></canvas>
+
+    <script type="text/javascript">
+        //获取画布元素
+        var cvs=document.getElementById("cvs");
+        //获取工具集
+        var cxt=cvs.getContext("2d");
+        //设置文字的样式
+        cxt.font='bold 20px 黑体';
+        
+        cxt.strokeStyle='red';
+        cxt.moveTo(10,30);
+        cxt.lineTo(120,30);
+        cxt.stroke();
+
+        cxt.beginPath();
+        cxt.moveTo(30,10);
+        cxt.lineTo(30,120);
+        cxt.stroke();
+        
+        //水平方向居中对齐
+        cxt.textAlign='center';
+
+        //垂直方向居中对齐
+        cxt.textBaseline='middle';
+
+        //调用工具集中的API绘制文字
+        cxt.fillText('画布',30,30);
+
+        //将绘制内容另存为图片
+        var imgUrl=cvs.toDataURL('image/png',1);
+
+        //输出到控制台
+        console.log(imgUrl);
+
+
+    </script>
+</body>
+</html>

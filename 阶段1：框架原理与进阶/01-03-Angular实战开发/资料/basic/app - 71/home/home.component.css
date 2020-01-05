@@ -1,0 +1,9 @@
+.child {
+  margin: 20px;
+  background-color: pink;
+}
+
+.actived {
+  color: #0f0;
+  font-size: 26px;
+}

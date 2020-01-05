@@ -1,0 +1,36 @@
+<style>
+.myHeader{
+  width: 200px;
+  height: 200px;
+  background-color: yellow;
+  border-radius: 50%;
+}
+</style>
+<template>
+  <view class="myHeader" @tap="sonTap" >
+    <!-- 自己的头部组件：{{name}} -->
+{{msg1}}
+  </view>
+</template>
+<script>
+import wepy from "wepy";
+export default class MyHeader extends wepy.component  {
+  props={
+    msg1:{
+      type:String,
+      twoWay:true
+    }
+  }
+  methods={
+    sonTap(){
+      this.msg1="子组件中的修改 呵呵";
+    }
+  }
+  data={
+    name:"我的头"
+  }
+
+}
+</script>
+
+

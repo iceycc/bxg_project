@@ -1,0 +1,4 @@
+<div class="todos">
+  <app-todos-header (add)="addTodo($event)"></app-todos-header>
+  <app-todos-list [todos]="todos" (del)="delTodo($event)" (change)="changeTodo($event)"></app-todos-list>
+</div>

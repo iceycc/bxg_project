@@ -1,0 +1,11 @@
+<html>
+  <head>
+    <title>Hacker News</title>
+  </head>
+  <body>
+    <ul class="news-view view">
+      hello world
+    </ul>
+    <h1>hello world {{helper.getData()}}</h1>
+  </body>
+</html>

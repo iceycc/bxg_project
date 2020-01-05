@@ -1,0 +1,21 @@
+{
+  "presets": ["env", "stage-2"],
+  "plugins": [
+    [
+      "import",
+      {
+        "libraryName": "iview",
+        "libraryDirectory": "src/components"
+      }
+    ],
+    [
+      "component",
+      {
+        "libraryName": "element-ui",
+        "styleLibraryName": "theme-chalk"
+      }
+    ],
+    ["transform-runtime"],
+    ["syntax-dynamic-import"]
+  ]
+}

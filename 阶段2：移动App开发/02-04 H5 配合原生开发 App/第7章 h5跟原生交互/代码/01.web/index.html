@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <input type="button" value="调用原生">
+    <input type="button" class='url' value="通过url scheme方式交互">
+</body>
+</html>
+<script>
+    // 修改背景色
+    function changeBackgroundColor() { 
+        document.body.style.backgroundColor='hotpink'
+        // document.body.innerHTML = '黑马程序员,传智播客'
+     }
+     // 按钮绑定点击事件
+     document.querySelector('input').onclick = function () {
+         window.webkit.messageHandlers.useNative.postMessage('黑马程序员')
+    }
+    document.querySelector('.url').onclick = function () {
+        // 创建iframe
+        const iframe = document.createElement('iframe')
+        // 设置url
+        iframe.src = 'heima://click'
+        // 尺寸
+        iframe.style.height = 0
+        iframe.style.width = 0
+        // 添加到页面上
+        document.body.appendChild(iframe)
+        // 移除
+        iframe.parentNode.removeChild(iframe)
+      }
+</script>

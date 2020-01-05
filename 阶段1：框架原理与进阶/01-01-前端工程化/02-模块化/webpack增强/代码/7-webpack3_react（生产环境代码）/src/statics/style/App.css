@@ -1,0 +1,14 @@
+.layout{
+    height: 100%;
+}
+
+.logo {
+  width: 120px;
+  height: 40px;
+  background: rgba(255, 255, 255, 0.2);
+  margin: 16px 24px 16px 0;
+  float: left;
+  background-image: url(../images/chihuo.jpg);
+  background-size: 120px 40px;
+  background-repeat:no-repeat;
+}

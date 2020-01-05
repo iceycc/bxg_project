@@ -1,0 +1,225 @@
+.search{
+  display: flex;
+  font-size: 28rpx;
+}
+.search .sear_left{
+  flex: 1;
+  display: flex;
+  align-items: center;
+}
+.search .sear_right{
+  flex: 5;
+  position: relative;
+}
+.sear_right input{
+  background-color: #f4f4f4;
+  border-radius: 20px;
+  padding-left: 30px;
+}
+.sear_right .icon-sousuo{
+  position: absolute;
+  top: 6px;
+  left: 10px;
+}
+
+
+.mt_swiper{
+  margin-top: 10px;
+}
+.mt_swiper swiper{
+  width: 750rpx;
+  height: 187rpx;
+}
+.mt_swiper navigator,
+.mt_swiper image{
+  width: 100%;
+  height: 100%;
+}
+
+.mt_nav{
+  display: flex;
+  flex-wrap: wrap;
+}
+.mt_nav navigator{
+  width: 20%;
+  text-align: center;
+  padding: 5px 0;
+}
+.mt_nav .icon{
+ 
+  display: inline-block;
+  font-size: 70rpx;
+  border-radius: 50%;
+  color: #fff;
+  padding: 5px;
+}
+
+.mt_nav navigator:nth-child(1) .icon{
+  background-color: #ee924f;
+}
+.mt_nav navigator:nth-child(2) .icon{
+  background-color: #fd6462;
+}
+.mt_nav navigator:nth-child(3) .icon{
+  background-color: #878ef8;
+}
+.mt_nav navigator:nth-child(4) .icon{
+  background-color: #5cc8b0;
+}
+.mt_nav navigator:nth-child(5) .icon{
+  background-color: #f4c14c;
+}
+.mt_nav navigator:nth-child(6) .icon{
+  background-color: #5fc9b2;
+}
+.mt_nav navigator:nth-child(7) .icon{
+  background-color: #ea7784;
+}
+.mt_nav navigator:nth-child(8) .icon{
+  background-color: #96d55a;
+}
+.mt_nav navigator:nth-child(9) .icon{
+  background-color: #6cacf6;
+}
+.mt_nav navigator:nth-child(10) .icon{
+  background-color: #f2be47;
+}
+.mt_nav .title{
+  font-size: 26rpx;
+  color: #666;
+}
+.sign{
+  width: 100%;
+}
+.sign image{
+  width: 100%;
+}
+
+.group_book{}
+.gb_title{
+  display: flex;
+  justify-content: space-between;
+}
+.gb_title text:nth-child(1){
+  font-size: 28rpx;
+}
+.gb_title text:nth-child(2){
+  font-size: 26rpx;
+  color: #666;
+}
+
+.gb_content{
+  overflow-x: auto;
+  white-space: nowrap;
+
+}
+.gb_content navigator{
+  width: 30%;
+  display: inline-block;
+  margin-left: 10px;
+}
+
+.gb_content image{
+  width: 100%;
+}
+.gb_content .brand_name{
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+  font-size: 26rpx;
+}
+.gb_content .price{
+  display: flex;
+  justify-content: space-around;
+}
+.gb_content .new_price{
+  font-size: 28rpx;
+  color: orange;
+}
+
+.gb_content .old_price{
+  color: #666;
+  font-size: 26rpx;
+  text-decoration: line-through;
+}
+
+
+.ads{
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+.ads navigator{
+  width: 49%;
+}
+.ads navigator image{
+  width: 100%;
+}
+/* 猜你喜欢 */
+.guess{}
+
+.guess_title{
+  text-align: center;
+  padding: 20px 0;
+  font-size: 26rpx;
+  color: #666;
+}
+
+.guess_content{
+
+}
+.guess_content navigator{
+  display: flex;
+}
+.guess_content .item_left{
+  flex: 1;
+}
+.guess_content .item_left image{
+  width: 100%;
+}
+.guess_content .item_right{
+  flex: 3;
+  padding-left: 15px;
+}
+.guess_content .shop_info{
+  padding: 5px 0;
+  display: flex;
+  justify-content: space-between;
+
+}
+.guess_content .shop_info text:nth-child(1){
+  font-size: 26rpx;
+}
+.guess_content .shop_info text:nth-child(2){
+  font-size: 24rpx;
+  color: #666;
+}
+.guess_content .goods_info{
+  padding: 5px 0 ;
+  font-size: 24rpx;
+  color: #666;
+}
+.guess_content .goods_sell{
+  display: flex;
+  justify-content: space-between;
+}
+.guess_content .goods_sell text:nth-child(1){
+  color: red;
+  font-size: 26rpx;
+}
+.guess_content .goods_sell text:nth-child(2){
+  font-size: 24rpx;
+  color: #666;
+}
+.guess_content .goods_dis {
+  padding: 5px 0 ;
+}
+.guess_content .goods_dis text{
+  color: red;
+  border: 1px solid red;
+  background-color: #f8f7f3;
+  font-size: 24rpx;
+}
+
+
+

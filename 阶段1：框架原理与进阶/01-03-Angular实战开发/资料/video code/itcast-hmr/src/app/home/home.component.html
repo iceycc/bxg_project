@@ -1,0 +1,50 @@
+<nz-layout class="home-wrapper">
+  <nz-sider nzCollapsible [(nzCollapsed)]="isCollapsed" [nzCollapsedWidth]="0" [nzBreakpoint]="'sm'">
+    <div class="logo">
+      <img src="/src/assets/heima-logo.png" alt="黑马程序员">
+    </div>
+    <ul nz-menu [nzTheme]="'dark'" [nzMode]="isCollapsed?'vertical':'inline'">
+      <li nz-submenu>
+        <span title><i class="anticon anticon-user"></i>员工管理</span>
+        <ul>
+          <li nz-menu-item routerLink="/home/employee">员工列表</li>
+          <li nz-menu-item routerLink="/home/employee/add">员工添加</li>
+        </ul>
+      </li>
+      <li nz-submenu>
+        <span title><i class="anticon anticon-smile-o"></i>角色管理</span>
+        <ul>
+          <li nz-menu-item>角色列表</li>
+          <li nz-menu-item>角色添加</li>
+        </ul>
+      </li>
+      <li nz-submenu>
+        <span title><i class="anticon anticon-lock"></i>权限管理</span>
+        <ul>
+          <li nz-menu-item>权限列表</li>
+        </ul>
+      </li>
+    </ul>
+  </nz-sider>
+  <nz-layout>
+    <nz-header style="background: #fff; padding:0;">
+      <!-- 添加头像和退出 -->
+      <div nz-row nzType="flex" nzJustify="end">
+        <div nz-col nzSpan="4">
+          <nz-avatar nzIcon="anticon anticon-user" nzSrc="/src/assets/avatar.png"></nz-avatar>
+
+          <a nz-popconfirm nzTitle="您是否确认退出？" (nzOnConfirm)="logout()" href="#" class="logout">
+            <i class="anticon anticon-logout"></i>&nbsp;&nbsp;退出
+          </a>
+        </div>
+      </div>
+    </nz-header>
+    <nz-content style="margin:24px 16px 0;">
+      <div style="padding:24px; background: #fff; min-height: 360px;">
+        <!-- 子路由的出口，用来加载 员工管理 等模块 -->
+        <router-outlet></router-outlet>
+      </div>
+    </nz-content>
+    <nz-footer style="text-align: center;">博学谷 © 2016-2018</nz-footer>
+  </nz-layout>
+</nz-layout>

@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <canvas id="cvs"
+            width="200"
+            height="200"
+            style="border: dashed 1px red">
+        你的浏览器不支持画布元素
+    </canvas>
+    <script type="text/javascript">
+        //获取画布元素
+        var cvs=document.getElementById("cvs");
+        //获取到元素的上下文环境对象
+        var gl=cvs.getContext('webgl');
+
+        //设置绘制图形填充的颜色
+        gl.clearColor(1.0, 0.0, 0.0, 1.0);
+
+        //调用缓存中值填充图形
+        gl.clear(gl.COLOR_BUFFER_BIT);
+    
+    </script>
+</body>
+</html>

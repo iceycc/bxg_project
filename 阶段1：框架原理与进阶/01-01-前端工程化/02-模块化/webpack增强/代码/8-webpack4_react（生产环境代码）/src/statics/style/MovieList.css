@@ -1,0 +1,10 @@
+.movieItem:hover{
+    box-shadow: 0 0 15px #999;
+    transform: scale(1.02);
+    transition: all 0.2s;
+    opacity: 0.8;
+    cursor: pointer;
+}
+.movieItem{
+    transition: all 0.2s;
+}

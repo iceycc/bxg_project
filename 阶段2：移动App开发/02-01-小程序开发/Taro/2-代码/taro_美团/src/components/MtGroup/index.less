@@ -1,0 +1,46 @@
+.mt_group{
+  padding: 5px;
+  .mt_group_title{
+    display: flex;
+    justify-content: space-between;
+    .mt_group_name1{
+      font-size: 30px;
+      color: #000; 
+    }
+    .mt_group_name2{
+      font-size: 25px;
+      color: #666;
+    }
+  }
+  .mt_group_content{
+    overflow-x: auto;
+    white-space: nowrap;
+    .mt_group_nav{
+      width: 33.33%;
+      display: inline-block;
+      margin-right: 10px;
+      .mt_goods_img{
+        width: 100%;
+      }
+      .goods_name{
+        text-overflow: ellipsis;
+        overflow: hidden;
+        white-space: nowrap;
+        font-size: 28px;
+      }
+      .price_row{
+        display: flex;
+        justify-content: space-between;
+        .new_price{
+          font-size: 28px;
+          color: orange;
+        }
+        .old_price{
+          font-size: 26px;
+          color: #666;
+          text-decoration: line-through;
+        }
+      }
+    }
+  }
+}

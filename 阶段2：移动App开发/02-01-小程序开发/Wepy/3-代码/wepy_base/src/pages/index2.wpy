@@ -1,0 +1,36 @@
+<style lang="less">
+</style>
+<template>
+
+<view>
+  <view @tap="myTap" >父:{{msg1}}</view>
+  <!-- 静态传值 -->
+<!-- <MyHeader  :msg1="msg1" ></MyHeader>   -->
+  <!-- 动态传值 单向绑定的方式 .sync  -->
+<!-- <MyHeader  :msg1.sync="msg1" ></MyHeader>   -->
+  <!-- 动态传值 双向绑定 1 .sync 2 twoWay:true -->
+  <MyHeader  :msg1.sync="msg1" ></MyHeader>  
+</view>
+</template> 
+
+<script>
+  import wepy from 'wepy'
+  import MyHeader from "../components/MyHeader";
+  export default class Index extends wepy.page {
+    config = {
+      navigationBarTitleText: '我的组件测试',
+       navigationBarTextStyle: 'white'
+    };
+    data={
+      msg1:"父组件中的数据"
+    }
+    methods={
+      myTap(){
+        this.msg1="被点击修改了1!!";
+      }
+    }
+    components={
+      MyHeader
+    }
+  }
+</script>

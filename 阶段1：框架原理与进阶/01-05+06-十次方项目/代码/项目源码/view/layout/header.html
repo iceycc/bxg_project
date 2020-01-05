@@ -1,0 +1,39 @@
+<header>
+  <div class="sui-navbar">
+    <div class="navbar-inner">
+      <a href="/" class="sui-brand"><img src="/public/img/asset-logo-black.png" alt="社交" /></a>
+      <form class="sui-form sui-form pull-left">
+        <input type="text" placeholder="输入关键词..." />
+        <span class="btn-search fa fa-search"></span>
+      </form>
+      <ul class="sui-nav">
+        <li class="active"><a href="/">首页</a></li>
+        <li><a href="/tags">话题</a></li>
+      </ul>
+      <div class="sui-nav pull-right info">
+        {% if sessionUser %}
+        <!-- 登录后 -->
+        <li><a href="./other-notice.html" class="notice">通知</a></li>
+        <li style="cursor: pointer;"><i class="iconfont icon-add"></i>
+          <!-- <ul class="hoverinfo">
+            <li><i class="iconfont icon-user" aria-hidden="true"></i> <a href="./headline-submit.html">主页</a></li>
+            <li><i class="iconfont icon-setting" aria-hidden="true"></i> <a href="./qa-submit.html" target="_blank">设置</a></li>
+            <li><i class="iconfont icon-off" aria-hidden="true"></i> <a href="./qa-submit.html" target="_blank">退出</a></li>
+          </ul> -->
+        </li>
+        <li class="hover"> <img src="{{ config.apiHost + sessionUser.avatar if sessionUser.avatar else '/public/img/widget-o-photo.png' }}" width="30" alt="用户头像" />
+          <ul class="hoverinfo">
+            <li><i class="iconfont icon-user" aria-hidden="true"></i> <a href="/people/{{ sessionUser.urlToken }}">主页</a></li>
+            <li><i class="iconfont icon-setting" aria-hidden="true"></i> <a href="/settings/profile">设置</a></li>
+            <li><i class="iconfont icon-off" aria-hidden="true"></i> <a href="/signout">退出</a></li>
+          </ul>
+        </li>
+        {% else %}
+        <!-- 登录前 -->
+        <li><a href="/login">注册</a></li>
+        <li><a href="/login" class="sui-btn btn-login">登录</a></li>
+        {% endif %}
+      </div>
+    </div>
+  </div>
+</header>

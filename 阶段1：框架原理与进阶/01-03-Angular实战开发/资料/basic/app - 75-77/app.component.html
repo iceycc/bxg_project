@@ -1,0 +1,13 @@
+<div>
+  <label>
+    用户名：
+    <input type="text" [formControl]="username">
+  </label>
+  <!-- <p *ngIf="username.errors && username.errors.required">用户名为必填项</p> -->
+  <!-- <p *ngIf="username.dirty && username.errors?.required">用户名为必填项</p> -->
+  <!-- <p *ngIf="username.dirty && username.hasError('required')">用户名为必填项</p> -->
+
+  <!-- <p *ngIf="username.dirty && username.hasError('minlength')">用户名密码长度不能少于3位</p> -->
+
+  <p *ngIf="username.dirty && username.hasError('maxlength')">用户名密码长度不能大于6位</p>
+</div>

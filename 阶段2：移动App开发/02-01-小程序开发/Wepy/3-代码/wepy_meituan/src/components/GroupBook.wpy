@@ -1,0 +1,69 @@
+<template>
+  <view class="group_book"> 
+    <view class="group_book_title">
+      <text>好货拼团</text>
+      <text>全部> </text>
+    </view>
+    <view class="group_book_content">
+      <repeat for="{{groupArr}}" key="index">
+        <navigator>
+          <image mode="widthFix" src="{{item.img_src}}"></image>
+          <view class="goods_name">{{item.brand_name}}</view>
+          <view class="goods_price_row">
+            <text>{{item.price}}</text>
+            <text>{{item.old_price}}</text>
+          </view>
+        </navigator>
+      </repeat>
+    </view>
+  </view>
+</template>
+
+<script>
+import wepy from 'wepy';
+export default class GroupBook extends wepy.component {
+  props = {
+    groupArr:Array
+  };
+}
+</script>
+
+<style lang="less">
+.group_book{
+  .group_book_title{
+    display: flex;
+    justify-content: space-between;
+  }
+  .group_book_content{
+    overflow-x: auto;
+    white-space: nowrap;
+    navigator{
+      width: 33%;
+      display: inline-block;
+      margin-right: 10px;
+      image{
+        width: 100%;
+      }
+      .goods_name{
+        text-overflow: ellipsis;
+        overflow: hidden;
+        white-space: nowrap;
+        font-size: 28rpx;
+      }
+      .goods_price_row{
+        display: flex;
+        justify-content: space-between;
+        text:nth-child(1){
+          font-size: 28rpx;
+          color: red;
+        }
+        text:nth-child(2){
+          color: #666;
+          font-size: 26rpx;
+          text-decoration: line-through;
+        }
+      }
+    }
+  }
+}
+</style>

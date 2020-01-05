@@ -1,0 +1,27 @@
+{
+  "name": "webpack3_react",
+  "version": "1.0.0",
+  "description": "",
+  "main": "webpack.config.dev.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "webpack-dev-server --config webpack.config.dev.js --progress --open --port 6008 --hot"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "react": "^16.6.0",
+    "react-dom": "^16.6.0"
+  },
+  "devDependencies": {
+    "babel-core": "^6.26.3",
+    "babel-loader": "^7.1.5",
+    "babel-preset-env": "^1.7.0",
+    "babel-preset-react": "^6.24.1",
+    "html-webpack-plugin": "^3.2.0",
+    "react-hot-loader": "^4.3.11",
+    "webpack": "^3.12.0",
+    "webpack-dev-server": "^2.11.2"
+  }
+}

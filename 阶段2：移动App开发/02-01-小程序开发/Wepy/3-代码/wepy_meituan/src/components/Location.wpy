@@ -1,0 +1,47 @@
+<template>
+  <view class="location">
+    <view class="location_left">
+      <text>{{city}}</text>
+      <text class="iconfont2 icon-xiangxia"></text>
+    </view>
+    <view class="location_right">
+      <input type="text">
+      <text class="iconfont2 icon-sousuo"></text>
+    </view>
+  </view>
+</template>
+
+<script>
+import wepy from "wepy";
+export default class Location extends wepy.component {
+props={
+  city:String
+}
+}
+</script>
+
+<style lang="less">
+.location{
+  display: flex;
+  font-size: 26rpx;
+.location_left{
+  display: flex;
+  flex: 1;
+  justify-content: space-around;
+  align-items: center;
+}
+.location_right{
+  flex: 4;
+  position: relative;
+  input{
+    border-radius: 15px;
+    background-color: #f4f4f4;
+  }
+  text{
+    position: absolute;
+    top: 6px;
+    left: 15px;
+  }
+}
+}
+</style>

@@ -1,0 +1,8 @@
+<div>
+  <label>
+    用户名：
+    <input type="text" [formControl]="username">
+  </label>
+
+  <p *ngIf="username.dirty && username.hasError('regerror')">用户名为小写字母,长度为3到6位</p>
+</div>

@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <canvas id="cvs" style="border: solid 1px #ccc"></canvas>
+
+    <script type="text/javascript">
+        //获取画布元素
+        var cvs=document.getElementById("cvs");
+        //获取工具集
+        var cxt=cvs.getContext("2d");
+
+        //定义一个中奖信息的数组
+        var arrGifs=['一等奖','二等奖','三等奖','没中奖'];
+        //随机生成一个中奖信息元素
+        var rdmGif=arrGifs[Math.floor(Math.random()*arrGifs.length)];
+        
+        cxt.font='bold 25px 黑体';
+        cxt.textAlign='center';
+        cxt.textBaseline='middle';
+        cxt.fillStyle='red';
+        //将获取的中奖信息绘制到画布中间
+        cxt.fillText(rdmGif,cvs.width/2,cvs.height/2);
+
+
+        //将绘制的中奖信息另存图片并作为画布元素的背景图片
+        var imgUrl=cvs.toDataURL('image/png',1);
+        cvs.style.background='url('+imgUrl+')';
+
+        //绘制矩形盖住中奖信息
+        cxt.clearRect(0,0,cvs.width,cvs.height);
+        //设置矩形的绘制颜色
+        cxt.fillStyle='#ddd';
+        //绘制盖住的区域
+        cxt.fillRect(0,0,cvs.width,cvs.height);
+
+        //设置一个变量控制绘制的触发
+        var flag=false;
+        cvs.addEventListener("mousedown",function(){
+            flag=true;
+            cxt.globalCompositeOperation='destination-out';
+        })
+        cvs.addEventListener("mousemove",function(e){
+            if(flag){
+                var x=e.clientX;
+                var y=e.clientY;
+                cxt.fillStyle='red';
+                cxt.fillRect(x,y,30,30);
+            }
+            
+        })
+        cvs.addEventListener("mouseup",function(){
+            flag=false;
+        })
+    </script>
+</body>
+</html>

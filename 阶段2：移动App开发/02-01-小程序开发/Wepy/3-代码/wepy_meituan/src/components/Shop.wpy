@@ -1,0 +1,105 @@
+<template>
+  <view class="shop">
+    <view class="shop_title">——— 猜你喜欢 ———</view>
+    <view class="shop_content">
+      <repeat for="{{shopArr}}" key="index">
+        <navigator class="shop_item">
+          <view class="item_left">
+            <image mode="widthFix" src="{{item.img_src}}"></image>
+          </view>
+          <view class="item_right">
+            <view class="goods_info1">
+              <text>{{item.brand_name}}</text>
+              <text>{{item.dis}}m</text>
+            </view>
+            <view class="goods_info2">
+              {{item.desc}}
+            </view>
+            <view class="goods_info3">
+              <text>￥{{item.price}}</text>
+              <text>已售{{item.count}}</text>
+            </view>
+            <view class="goods_info4">
+              <text>{{item.discount}}</text>
+            </view>
+          </view>
+        </navigator>
+      </repeat>
+    </view>
+  </view>
+</template>
+
+<script>
+import wepy from 'wepy';
+export default class Shop extends wepy.component {
+  props = {
+    shopArr: Array
+  };
+}
+</script>
+
+<style lang="less">
+.shop {
+  .shop_title {
+    padding: 10px;
+    text-align: center;
+    color: #666;
+    font-size: 24rpx;
+  }
+  .shop_content {
+    .shop_item {
+      padding: 15px 0;
+      display: flex;
+      border-top: 1px solid #666;
+      .item_left {
+        flex: 1;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        image {
+          width: 80%;
+        }
+      }
+      .item_right {
+        flex: 3;
+        .goods_info1 {
+          display: flex;
+          justify-content: space-between;
+          text:nth-child(1) {
+            font-size: 30rpx;
+          }
+          text:nth-child(2) {
+            font-size: 26rpx;
+            color: #666;
+          }
+        }
+        .goods_info2 {
+          font-size: 30rpx;
+          color: #666;
+        }
+        .goods_info3 {
+          display: flex;
+          justify-content: space-between;
+          text:nth-child(1) {
+            font-size: 30rpx;
+            color: red;
+          }
+          text:nth-child(2) {
+            font-size: 26rpx;
+            color: #666;
+          }
+        }
+        .goods_info4 {
+          text {
+            font-size: 26rpx;
+            color: red;
+            border: 1px solid currentColor;
+            padding: 3px;
+            background-color: #fdf6f7;
+          }
+        }
+      }
+    }
+  }
+}
+</style>

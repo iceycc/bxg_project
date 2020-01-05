@@ -1,0 +1,16 @@
+<div>
+  <label>
+    用户名：
+    <input type="text" [formControl]="username">
+  </label>
+  <p>{{ username.value }}</p>
+
+  <label>
+    密码：
+    <input type="text" [formControl]="password">
+  </label>
+  <p>{{ password.value }}</p>
+
+  <button (click)="getUserName()">获取用户名</button>
+  <button (click)="setUserName()">更新用户名</button>
+</div>

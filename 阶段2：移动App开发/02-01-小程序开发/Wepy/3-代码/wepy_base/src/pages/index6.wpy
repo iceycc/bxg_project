@@ -1,0 +1,35 @@
+<style lang="less">
+</style>
+<template>
+
+  <view @tap.default="myTap0">
+    页面
+    <!-- 
+    需求： 
+    1 给view标签 绑定tap点击事件
+    2 给页面中的组件 绑定tap点击事件
+    3 直接点击组件 
+   -->
+    <C></C>
+  </view>
+</template> 
+
+<script>
+import wepy from 'wepy';
+import C from '../components/C';
+
+export default class Index6 extends wepy.page {
+  config = {
+    navigationBarTitleText: '我的组件测试',
+    navigationBarTextStyle: 'white'
+  };
+  methods={
+    myTap0(){
+      console.log("页面的tap");
+    }
+  }
+  components = {
+    C
+  };
+}
+</script>

@@ -1,0 +1,34 @@
+<style lang="less">
+</style>
+<template>
+
+  <view>
+    <Panel>
+      <view>页面中的身体</view>
+    </Panel>
+    <!-- 多个插槽的使用演示 -->
+    <Panel2>
+      <view slot="body1">身体1</view>
+      <view slot="body2">身体2</view>
+    </Panel2>
+  </view>
+</template> 
+
+<script>
+import wepy from 'wepy';
+import Panel from '../components/Panel';
+import Panel2 from '../components/Panel2';
+
+export default class Index8 extends wepy.page {
+  config = {
+    navigationBarTitleText: '我的组件测试',
+    navigationBarTextStyle: 'white'
+  };
+  methods = {};
+
+  components = {
+    Panel,
+    Panel2
+  };
+}
+</script>

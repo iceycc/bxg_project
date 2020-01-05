@@ -1,0 +1,79 @@
+.personal_nav{
+    height: 550px;
+    width: 200px;
+    position: relative;
+    z-index: 11;
+    top: -70px;
+    left:80px;
+    padding: 0px !important;
+    background: #fff;
+    .title{
+        font-size: 18px;
+        text-align: center;
+        line-height: 60px;
+        font-weight: bold;
+        color: #00a4ff;
+    }
+    .my_ico{
+        width: 100%;
+        text-align: center;
+        img {
+            box-shadow: 2px 2px 4px #000;
+            width: 70%;
+            margin: 0px auto;
+            border-radius: 50%;
+          }
+        p {
+        text-align: center;
+        line-height: 50px;
+        }
+    }
+    .item {
+        background: #fff;       
+        padding-top: 0px;      
+        a {
+            display: block;
+            text-decoration: none;
+          }
+      }
+    li {
+        color: #333;
+    }
+    .active{
+        a{
+            color: #00a4ff;
+            &:before {
+                position: relative;
+                top: 0px;
+                font-size: 12px;
+              }              
+        }
+
+    }
+      
+  }
+  .pull_left{
+    position: relative; top: -70px;
+    // float: left !important;
+  }
+
+  .nav{
+    padding-left: 0;
+    margin-bottom: 0;
+    list-style: none;
+  }
+
+  .text_left{
+    text-align: left;
+  }
+
+  .glyphicon{
+    position: relative;
+    top: 1px;
+    display: inline-block;
+    font-family: 'Glyphicons Halflings';
+    font-style: normal;
+    font-weight: normal;
+    line-height: 1;
+    -webkit-font-smoothing: antialiased;
+  }

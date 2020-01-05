@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <!-- 上述3个meta标签*必须*放在最前面，任何其他内容都*必须*跟随其后！ -->
+  <meta name="description" content="" />
+  <meta name="author" content="" />
+  <link rel="icon" href="/public/img/asset-favicon.ico" />
+  <title>社交-登录注册</title>
+  <!-- 页面 css js -->
+  <!-- <script type="text/javascript" src="../../plugins/sui/sui.min.js" charset="UTF-8"></script> -->
+  <link rel="stylesheet" type="text/css" href="/public/plugins/normalize-css/normalize.css" />
+  <link rel="stylesheet" type="text/css" href="/public/plugins/yui/cssgrids-min.css" />
+  <link rel="stylesheet" type="text/css" href="/public/plugins/sui/sui.min.css" />
+  <link rel="stylesheet" type="text/css" href="/public/plugins/sui/sui-append.min.css" />
+  <link rel="stylesheet" type="text/css" href="/public/plugins/font-awesome/css/font-awesome.min.css" />
+  <link rel="stylesheet" type="text/css" href="/public/css/widget-base.css" />
+  <link rel="stylesheet" type="text/css" href="/public/css/widget-head-foot.css" />
+  <link rel="stylesheet" type="text/css" href="/public/css/page-sj-person-loginsign.css" />
+  <style>
+    .error {
+      display: block;
+      color: red;
+    }
+  </style>
+</head>
+
+<body>
+  <!--头部导航-->
+  <header class="head-login">
+    <div class="wrapper">
+      <div class="sui-navbar">
+        <div class="navbar-inner">
+          <a href="./index.html" class="sui-brand"> <img src="/public/img/asset-logo-black.png" alt="社交" /> </a>
+          <span class="login-text">| 登录注册</span>
+        </div>
+      </div>
+    </div>
+  </header>
+  <div class="wrapper loginsign">
+    <div class="item signup">
+      <div class="form">
+        <h3 class="loginsign-title">注册新账号</h3>
+        <form class="sui-form" id="signup_form">
+          <div class="control-group">
+            <label for="email" class="control-label">邮箱</label>
+            <div class="controls">
+              <input
+                class="input-xlarge"
+                type="email"
+                id="email"
+                name="email"
+                required
+                placeholder="请输入邮箱"/>
+            </div>
+          </div>
+          <div class="control-group">
+            <label for="password" class="control-label">密码</label>
+            <div class="controls">
+              <input type="text" id="password" name="password" placeholder="请输入密码" required class="input-xlarge" />
+            </div>
+          </div>
+          <div class="different">
+            <div class="radio-content">
+              <div id="a1" class="phone">
+                <div class="control-group">
+                  <label for="nickname" class="control-label">昵称</label>
+                  <div class="controls">
+                    <input type="text" id="nickname" name="nickname" required placeholder="请输入昵称" class="input-xlarge" />
+                  </div>
+                </div>
+                <div class="control-group">
+                  <label for="captcha" class="control-label">验证码</label>
+                  <div class="controls">
+                    <input type="text" id="captcha" name="captcha" required placeholder="请输入验证码" class="input-xlarge" style="width: 200px;" />
+                    <img id="captcha_img" src="/captcha" alt="captcha">
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="control-group btn-signup">
+            <label class="control-label"></label>
+            <div class="controls">
+              <label>
+                <input type="checkbox" name="agree" />
+                <span class="type-text" style="font-size:12px;">同意协议并接受《服务条款》</span>
+              </label>
+              <button type="submit" class="sui-btn btn-danger btn-yes">注 册</button>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+    <div class="item">
+      <div class="form">
+        <h3 class="loginsign-title">用户登录</h3>
+        <form class="sui-form login-form" id="signin_form">
+          <p class="error" id="signin_msg" style="display: none;"></p>
+          <div class="control-group">
+            <label for="inputname" class="control-label">邮箱</label>
+            <div class="controls">
+              <input type="email" id="inputname" name="email" required placeholder="请输入邮箱" class="input-xlarge" data-rules="required" />
+            </div>
+          </div>
+          <div class="control-group">
+            <label for="inputpassword" class="control-label">密码</label>
+            <div class="controls">
+              <input type="text" id="inputpassword" name="password" required placeholder="输入密码" class="input-xlarge" />
+            </div>
+          </div>
+          <div class="controls">
+            <label>
+              <input type="checkbox" name="remember" /><span class="type-text" style="font-size:12px;">记住登录状态</span> </label>
+            <button type="submit" class="sui-btn btn-danger btn-yes">登 录</button>
+          </div>
+          <div class="other-methods">
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+  {% include "./layout/footer.html" %}
+  <script src="/node_modules/jquery/dist/jquery.js"></script>
+  <script src="/node_modules/jquery-validation/dist/jquery.validate.js"></script>
+  <script>
+    $('#captcha_img').on('click', window.handleCaptcha)
+
+    const $signupForm = $('#signup_form')
+    const $signinForm = $('#signin_form')
+
+    $signupForm.on('submit', handleSignup)
+    $signinForm.on('submit', handleSignin)
+    
+    // $signupForm.validate({
+    //   rules: { // 验证规则对象
+    //     email: {
+    //       required: true,
+    //       // minlength: 3,
+    //       // maxlength: 12,
+    //       // remote: '/users/check' // /users/check?username=xxx
+    //     },
+    //     password: {
+    //       required: true,
+    //       // minlength: 6,
+    //       // maxlength: 18
+    //     },
+    //     nickname: {
+    //       required: true,
+    //       minlength: 2,
+    //       maxlength: 12,
+    //       // remote: '/users/check' // /users/check?nickname=xxx
+    //     },
+    //     captcha: {
+    //       required: true,
+    //       // remote: '/captcha/check'
+    //     },
+    //     agree: {
+    //       required: true
+    //     }
+    //   },
+    //   messages: {
+    //     username: {
+    //       required: '请输入用户名',
+    //       minlength: '用户名必须为3-12位',
+    //       maxlength: '用户名必须为3-12位',
+    //       remote: '用户名已存在'
+    //     },
+    //     password: {
+    //       required: '请输入密码',
+    //       minlength: '密码必须为6-18位',
+    //       maxlength: '密码必须为6-18位'
+    //     },
+    //     nickname: {
+    //       required: '请输入昵称',
+    //       minlength: '昵称必须为2-12位',
+    //       maxlength: '昵称必须为2-12位',
+    //       remote: '昵称已存在'
+    //     },
+    //     captcha: {
+    //       required: '请输入验证码',
+    //       remote: '验证码错误或者已过期，请点击获取最新验证码'
+    //     },
+    //     agree: {
+    //       required: '必须同意用户协议'
+    //     }
+    //   },
+    //   submitHandler: function (form) {
+    //     window.handleSignup()
+    //   }
+    // })
+
+    // $signinForm.validate({
+    //   rules: { // 验证规则对象
+    //     username: {
+    //       required: true
+    //     },
+    //     password: {
+    //       required: true
+    //     }
+    //   },
+    //   messages: {
+    //     username: {
+    //       required: '请输入用户名'
+    //     },
+    //     password: {
+    //       required: '请输入密码'
+    //     }
+    //   },
+    //   submitHandler: function (form) {
+    //     window.handleSignin()
+    //   }
+    // })
+
+    function handleCaptcha() {
+      $(this).attr('src', '/captcha?' + Math.random())
+    }
+
+    function handleSignup() {
+      $.ajax({
+        url: '/signup',
+        method: 'POST',
+        data: $signupForm.serialize(),
+        success: function (data) {
+          window.localStorage.setItem('userInfo', JSON.stringify(data))
+          window.location.href = '/'
+        },
+        error: function (err) {
+          console.log('注册失败：', err)
+        }
+      })
+      return false
+    }
+
+    function handleSignin() {
+      $.ajax({
+        url: '/signin',
+        method: 'POST',
+        data: $signinForm.serialize(),
+        success: function (data) {
+          window.localStorage.setItem('userInfo', JSON.stringify(data))
+          window.location.href = '/'
+        },
+        error: function (err) {
+          console.log('登录失败', err)
+        }
+      })
+      return false
+    }
+  </script>
+</body>
+
+</html>

@@ -1,0 +1,11 @@
+<p *ngIf="isShow; else notShow">满足条件时显示</p>
+<ng-template #notShow>
+  <p>不满足条件时显示</p>
+</ng-template>
+<ul>
+  <li *ngFor="let item of teacherList">{{item}}</li>
+</ul>
+<p [ngStyle]="{'color': 'red'}">红色</p>
+<p [ngStyle]="{'color': getColor()}">红色</p>
+
+<h3 [ngClass]="{'active': isActive === true}">测试NgClass使用</h3>

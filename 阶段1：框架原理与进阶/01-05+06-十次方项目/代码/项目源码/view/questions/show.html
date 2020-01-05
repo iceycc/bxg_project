@@ -1,0 +1,327 @@
+{% extends "../layout/layout.html" %}
+
+{% block head %}
+<link rel="stylesheet" type="text/css" href="/public/css/page-sj-qa-detail.css" />
+<link rel="stylesheet" href="/node_modules/github-markdown-css/github-markdown.css">
+<link rel="stylesheet" href="/node_modules/simplemde/dist/simplemde.min.css">
+<style>
+  .markdown-body {
+    box-sizing: border-box;
+    min-width: 200px;
+    max-width: 980px;
+    margin: 0 auto;
+    /*padding: 45px;*/
+  }
+
+  @media (max-width: 767px) {
+    .markdown-body {
+      padding: 15px;
+    }
+  }
+
+  .CodeMirror, .CodeMirror-scroll {
+    min-height: 150px;
+  }
+
+  .sidebar button.active {
+    color: orange;
+  }
+</style>
+{% endblock %}
+
+{% block main %}
+{% include "../layout/navbar.html" %}
+<!--两列布局-->
+<div class="wrapper qa-content">
+  <div class="qa-title">
+    <div class="fl title">
+      <h2>{{ question.title }}</h2>
+      <p>
+        作者：<a class="author" href="#">{{ question.user.nickname }}</a>
+      </p>
+      <p>
+        发布于{{ question.createdAt | relativeTime }} · 
+        更新于{{ question.updatedAt | relativeTime }}
+      </p>
+      <p>
+        {% for item in question.tags %}
+        <span class="tag">{{ item }}</span>
+        {% endfor %}
+      </p>
+      <p>
+        <!-- 只有问题的作者 === 当前登录用户 -->
+        {% if question.userId === sessionUser._id %}
+        <a class="action" href="/questions/{{ question._id }}/edit" title="编辑">
+          <span class="iconfont icon-edit"></span>
+        </a>
+        <a class="action" style="margin-left: 5px;" id="delete" href="/questions/{{ question._id }}" title="删除">
+          <span class="iconfont icon-delete"></span>
+        </a>
+        {% endif %}
+      </p>
+    </div>
+    <div class="fr share">
+      <h4>分享到：</h4>
+      <ul class="share-go">
+        <li><img src="/public/img/widget-weibo.png" alt=""></li>
+        <li><img src="/public/img/widget-weixin.png" alt=""></li>
+        <li><img src="/public/img/widget-weibo.png" alt=""></li>
+        <li><img src="/public/img/widget-weixin.png" alt=""></li>
+      </ul>
+    </div>
+    <div class="clearfix"></div>
+  </div>
+  <div class="fl left-list">
+    <div class="problem-detail">
+      <div class="title-intro">
+        <div class="sidebar">
+          <button type="button" data-type="posts" data-type-id="{{ question._id }}" data-value="1" data-user-id="{{ sessionUser._id }}" class="like {{ 'active' if question.vote.value === 1 else '' }}" data-placement="right" data-toggle="tooltip" title="问题对人有帮助，内容完整，我也想知道答案"><i class="fa fa-caret-up" aria-hidden="true"></i></button>
+          <span class="count">{{ question.voteCount }}</span>
+          <button type="button" data-type="posts" data-type-id="{{ question._id }}" data-value="-1" data-user-id="{{ sessionUser._id }}" class="hate {{ 'active' if question.vote.value === -1 else '' }}" data-placement="right" data-toggle="tooltip" title="问题没有实际价值，缺少关键内容，没有改进余地"><i class="fa fa-caret-down" aria-hidden="true"></i></button>
+        </div>
+        <div class="title">
+          <div class="markdown-body">{{ question.body | mdToHtml | safe }}</div>
+          <div class="clearfix"></div>
+        </div>
+      </div>
+      <hr>
+      <h4 id="comment_count">正在加载...</h4>
+      <div class="answer-intro">
+      </div>
+      <div>
+        <form class="form-inline sui-form" id="comment-form">
+          <h4 class="comment-title">添加回复</h4>
+          <input type="hidden" name="postId" value="{{ question._id }}">
+          <div class="control-group">
+            <textarea name="body" rows="8"></textarea>
+          </div>
+          <div class="control-group">
+            <button type="submit" class="sui-btn btn-xlarge btn-primary">回复</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+  <div class="fl right-tag">
+    <div class="similar-problem">
+      <h3 class="title">相似问题</h3>
+      <ul class="problem-list">
+        <li class="list-item">
+          <p class="list-title">求一份浏览器中html css javascript jquery ajax的渲染顺序与原理！！</p>
+          <p class="list-info"><a href="">1 回答</a> | 已解决</p>
+        </li>
+        <li class="list-item">
+          <p class="list-title">求一份浏览器中html css javascript jquery ajax的渲染顺序与原理！！</p>
+          <p class="list-info"><a href="">1 回答</a> | 已解决</p>
+        </li>
+        <li class="list-item">
+          <p class="list-title">求一份浏览器中html css javascript jquery ajax的渲染顺序与原理！！</p>
+          <p class="list-info"><a href="">1 回答</a> | 已解决</p>
+        </li>
+        <li class="list-item">
+          <p class="list-title">求一份浏览器中html css javascript jquery ajax的渲染顺序与原理！！</p>
+          <p class="list-info"><a href="">1 回答</a> | 已解决</p>
+        </li>
+      </ul>
+    </div>
+  </div>
+  <div class="clearfix"></div>
+</div>
+{% endblock %}
+
+{% block script %}
+<script src="/node_modules/simplemde/dist/simplemde.min.js"></script>
+<script src="/node_modules/lodash/lodash.js"></script>
+<script type="text/template" id="comments-tpl">
+<% comments.forEach(function (item, index) { %>
+  <div class="answer-item">
+    <div class="sidebar">
+      <button type="button" class="like" data-placement="right" data-toggle="tooltip" title="问题对人有帮助，内容完整，我也想知道答案"><i class="fa fa-caret-up" aria-hidden="true"></i></button>
+      <span class="count">0</span>
+      <button type="button" class="hate" data-placement="right" data-toggle="tooltip" title="问题没有实际价值，缺少关键内容，没有改进余地"><i class="fa fa-caret-down" aria-hidden="true"></i></button>
+    </div>
+    <div class="title">
+      <p><%= item.body %></p>
+      <div class="operate">
+        <div class="tool pull-left">
+          <span class="time"><%= item.createdAt %>评论</span>
+          <% if (item.userId === userInfo._id) { %>
+          <span class="edit" name="comment-edit">编辑</span>
+          <span class="jubao" data-id="<%= item._id %>" name="comment-delete">删除</span>
+          <% } %>
+        </div>
+        <div class="myanswer pull-right">
+          <img src="/public/img/widget-photo.jpg" alt=""> <a href="#">我的回答</a>
+        </div>
+        <div class="clearfix"></div>
+      </div>
+      <div class="comment-box">
+        <form class="comment-form" action="/comments/<%= item._id %>" name="comment-edit-form">
+          <textarea name="body" row="2" placeholder=""><%= item.body %></textarea>
+          <button type="submit" class="sui-btn submit-comment">提交修改</button>
+        </form>
+      </div>
+    </div>
+    <div class="clearfix"></div>
+  </div>
+<% }) %>
+</script>
+<script src="/node_modules/dayjs/dayjs.min.js"></script>
+<script src="/node_modules/dayjs/plugin/relativeTime.js"></script>
+<script src="/node_modules/dayjs/locale/zh-cn.js"></script>
+<script>
+  dayjs.extend(dayjs_plugin_relativeTime)
+  dayjs.locale('zh-cn')
+
+  window.loadComments()
+
+  var userInfo = JSON.parse(window.localStorage.getItem('userInfo') || '{}')
+
+  var simplemde = new SimpleMDE({
+    element: $('textarea[name=body]')[0],
+    spellChecker: false,
+    status: false
+  })
+
+  $('#delete').on('click', handleDelete)
+
+  function handleDelete() {
+    if (!window.confirm('确认删除吗？')) {
+      return false
+    }
+    $.ajax({
+      url: $(this).attr('href'),
+      method: 'DELETE',
+      success: function (data) {
+        window.location.href = '/'
+      },
+      error: function (err) {
+        console.log(err)
+      }
+    })
+    return false
+  }
+
+  $('#comment-form').on('submit', handleSubmitComment)
+
+  function handleSubmitComment() {
+    $.ajax({
+      url: '/comments',
+      method: 'POST',
+      data: $(this).serialize(),
+      dataType: 'json',
+      success: function (data) {
+        window.loadComments()
+        simplemde.value('')
+      },
+      error: function (err) {
+        console.error('回复失败', err)
+      }
+    })
+    return false
+  }
+
+  function loadComments() {
+    $.ajax({
+      url: '/comments',
+      method: 'GET',
+      data: {
+        postId: $('input[name=postId]').val()
+      },
+      dataType: 'json',
+      success: function (data) {
+        $('#comment_count').html(data.length + '个回复')
+        var tplStr = $('#comments-tpl').html()
+        data.forEach(item => {
+          item.createdAt = dayjs().from(dayjs(item.createdAt))
+        })
+        var htmlStr = _.template(tplStr)({
+          comments: data,
+          userInfo
+        })
+        $('.answer-intro').html(htmlStr)
+      }
+    })
+  }
+
+  // 事件代理的方式
+  // 适用于为异步内容添加事件
+  $('body').delegate('span[name=comment-delete]', 'click', handleCommentDelete)
+
+  function handleCommentDelete () {
+    if (!window.confirm('确认删除吗？')) {
+      return
+    }
+    $.ajax({
+      url: '/comments/' + $(this).data('id'),
+      method: 'DELETE',
+      success: function (data) {
+        window.loadComments()
+      },
+      error: function (err) {
+        console.log('删除失败', err)
+      }
+    })
+  }
+
+  // 点击编辑显示编辑表单
+  $('body').delegate('span[name=comment-edit]', 'click', window.showEditForm)
+
+  function showEditForm() {
+    $(this).closest('.answer-item').find('.comment-box').show()
+  }
+
+  $('body').delegate('form[name=comment-edit-form]', 'submit', window.handleCommentUpdate)
+
+  function handleCommentUpdate () {
+    $.ajax({
+      url: $(this).attr('action'),
+      method: 'PATCH',
+      data: $(this).serialize(),
+      success: function (data) {
+        window.loadComments()
+      },
+      error: function (err) {
+        console.log('更新失败', err)
+      }
+    })
+    return false
+  }
+
+  $('.sidebar button').on('click', function (e) {
+    var data = $(this).data()
+    var $button = $(this)
+    $.ajax({
+      url: '/votes',
+      method: 'post',
+      data: {
+        type: data.type,
+        typeId: data.typeId,
+        value: data.value,
+        userId: data.userId
+      },
+      success: function (data) {
+        var value = data.value
+        console.log(value)
+        switch(value) {
+          case 1: // 支持
+            $button.closest('.sidebar').find('button').removeClass('active')
+            $button.addClass('active')
+            break
+          case -1: // 反对
+            $button.closest('.sidebar').find('button').removeClass('active')
+            $button.addClass('active')
+            break
+          case 0: // 没有状态
+            $button.removeClass('active')
+            break
+        }
+        $button.closest('.sidebar').find('span.count').html(data.voteCount)
+      },
+      error: function (err) {
+        console.log('投票失败', err)
+      }
+    })
+  })
+</script>
+{% endblock %}

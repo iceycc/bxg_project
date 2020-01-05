@@ -1,0 +1,81 @@
+{% extends "../layout/layout.html" %}
+
+{% block head %}
+<link rel="stylesheet" type="text/css" href="/public/css/page-sj-qa-submit.css" />
+<link rel="stylesheet" href="/node_modules/simplemde/dist/simplemde.min.css">
+{% endblock %}
+
+{% block main %}
+<div class="wrapper">
+    <div class="qa-submit-form">
+      <form class="sui-form" id="form">
+        <div class="input-title">
+          <input type="text" name="title" placeholder="标题：一句话说清问题，用问号结尾" class="input-xfat input-xxlarge title">
+        </div>
+        <div class="tags-area">
+          <div class="input-tags">
+            <input type="text" name="tags" placeholder="标签，如:php可使用逗号，分号； 来分隔" class="input-xfat input-xxlarge" id="tags">
+          </div>
+          <div class="tags-box">
+            <ul class="sui-tag tag-bordered">
+              <li class="tag-item">javascript</li>
+              <li class="tag-item">php</li>
+              <li class="tag-item">css</li>
+              <li class="tag-item">html</li>
+              <li class="tag-item">java</li>
+              <li class="tag-item">python</li>
+              <li class="tag-item">html5</li>
+              <li class="tag-item">node.js</li>
+              <li class="tag-item">c++</li>
+            </ul>
+          </div>
+        </div>
+        <div class="editor">
+          <!-- <textarea name="editor1"></textarea> -->
+          <textarea name="body" cols="100" rows="10"></textarea>
+        </div>
+        <div class="submit">
+          <span>已保存草稿</span>
+          <button type="submit" class="sui-btn btn-release">发布问题</button>
+          <!-- <span><a class="sui-btn btn-release">发布问题</a></span> -->
+        </div>
+        <div class="clearfix"></div>
+      </form>
+    </div>
+</div>
+{% endblock %}
+
+{% block script %}
+<!-- 发布问题的富文本编辑器 -->
+<script src="/node_modules/simplemde/dist/simplemde.min.js"></script>
+<script>
+  var simplemde = new SimpleMDE({
+    element: $('textarea[name=body]')[0],
+    spellChecker: false,
+    autosave: { // 自动保存
+      enabled: true,
+      uniqueId: "MyUniqueID", // 本地存储的 key
+      delay: 1000, // 保存延时
+    },
+  })
+
+  $('#form').on('submit', handleSubmit)
+
+  function handleSubmit() {
+    $.ajax({
+      url: '/questions',
+      method: 'POST',
+      data: $(this).serialize(),
+      dataType: 'json',
+      success: function (data) {
+        window.location.href = '/questions/' + data._id
+      },
+      error: function (err) {
+        console.error('发布失败', err)
+      }
+    })
+    return false
+  }
+</script>
+{% endblock %}
+

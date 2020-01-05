@@ -1,0 +1,1 @@
+{"version":3,"sources":["index.js"],"names":["console","log"],"mappings":";AAAAA,QAAQC,IAAI","file":"1-parcel_demo.464eb794.map","sourceRoot":"..","sourcesContent":["console.log(\"hello parcel\");"]}

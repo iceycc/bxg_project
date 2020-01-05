@@ -1,0 +1,33 @@
+<div class="login-wrapper" nz-row nzType="flex" nzJustify="space-around" nzAlign="middle">
+  <form nz-form [formGroup]="loginForm" class="login-form" (ngSubmit)="submitForm()">
+    <nz-form-item>
+      <nz-form-control>
+        <nz-input-group nzPrefixIcon="anticon anticon-user">
+          <input type="text" nz-input formControlName="userName" placeholder="用户名">
+        </nz-input-group>
+        <nz-form-explain *ngIf="loginForm.get('userName').dirty && loginForm.get('userName').hasError('required')">请输入用户名</nz-form-explain>
+        <nz-form-explain *ngIf="loginForm.get('userName').dirty && (loginForm.get('userName').hasError('minlength') || loginForm.get('userName').hasError('maxlength'))">用户名长度为3-6位</nz-form-explain>
+      </nz-form-control>
+    </nz-form-item>
+    <nz-form-item>
+      <nz-form-control>
+        <nz-input-group nzPrefixIcon="anticon anticon-lock">
+          <input type="password" nz-input formControlName="password" placeholder="密码">
+        </nz-input-group>
+        <nz-form-explain *ngIf="loginForm.get('password').dirty && loginForm.get('password').hasError('required')">请输入密码</nz-form-explain>
+        <nz-form-explain *ngIf="loginForm.get('password').dirty && loginForm.get('password').hasError('pattern')">密码只能由数字、字母组成，长度为3-6位</nz-form-explain>
+      </nz-form-control>
+    </nz-form-item>
+    <nz-form-item>
+      <nz-form-control>
+        <label nz-checkbox>
+          <span>记住我</span>
+        </label>
+        <a class="login-form-forgot" class="login-form-forgot">忘记密码</a>
+        <button nz-button class="login-form-button" [nzType]="'primary'">登 录</button>
+        或者
+        <a href="">马上去注册!</a>
+      </nz-form-control>
+    </nz-form-item>
+  </form>
+</div>

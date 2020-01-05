@@ -1,0 +1,13 @@
+<div>
+  <!-- 同时操作多个类 -->
+  <h1 [ngClass]="classList">测试ngClass</h1>
+
+  <!-- 只需要操作一个类 -->
+  <p [class.test]="isTest">添加或移除一个类</p>
+
+  <!-- 同时操作多个style -->
+  <h2 [ngStyle]="stylesList">我很红，我很大</h2>
+
+  <!-- 只操作一个style -->
+  <p [style.fontSize]="fz">我更大</p>
+</div>

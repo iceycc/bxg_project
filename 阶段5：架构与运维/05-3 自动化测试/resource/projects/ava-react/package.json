@@ -1,0 +1,43 @@
+{
+  "name": "ava-react",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "react": "^16.8.6"
+  },
+  "devDependencies": {
+    "@ava/babel-preset-stage-4": "^3.0.0",
+    "@babel/preset-env": "^7.5.4",
+    "@babel/preset-react": "^7.0.0",
+    "@babel/register": "^7.4.4",
+    "ava": "^2.2.0",
+    "eslint": "^6.0.1",
+    "eslint-plugin-ava": "^7.1.0",
+    "react-test-renderer": "^16.8.6"
+  },
+  "ava": {
+    "verbose": true,
+    "sources": [
+      "src/**/*"
+    ],
+    "require": [
+      "@babel/register"
+    ],
+    "babel": {
+      "extensions": [
+        "js",
+        "jsx"
+      ],
+      "testOptions": {
+        "babelrc": false
+      }
+    }
+  }
+}

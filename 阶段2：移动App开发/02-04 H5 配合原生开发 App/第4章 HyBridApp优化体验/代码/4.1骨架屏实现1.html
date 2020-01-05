@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <!-- 视口 -->
+  <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <style>
+    .shell .placeholder-block{
+      display: block;
+      height: 5em;
+      background: #ccc;
+      margin: 1em;
+    }
+    .novel {
+      height: 5em;
+      background-color: yellowgreen;
+    }
+  </style>
+</head>
+<body>
+  <div class="shell">
+    <div class="placeholder-block"></div>
+  </div>
+</body>
+</html>
+<script>
+  setTimeout(()=>{
+    // 移除 占位dom元素
+    document.querySelector('.shell').innerHTML = ''
+    // 创建数据的dom元素  添加到页面上
+    let p = document.createElement('p')
+    p.innerHTML = '黑马程序员'
+    p.className = 'novel'
+    document.querySelector('.shell').appendChild(p)
+  },3000)
+</script>

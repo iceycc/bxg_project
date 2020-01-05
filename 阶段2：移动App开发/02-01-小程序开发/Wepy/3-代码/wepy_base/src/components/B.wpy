@@ -1,0 +1,17 @@
+<template>
+  <view >B:</view>
+</template>
+
+<script>
+import wepy from 'wepy';
+export default class B extends wepy.component {
+  methods={
+    show(args1){
+      console.log("b组件的触发"+args1);
+    }
+  }
+}
+</script>
+
+<style>
+</style>

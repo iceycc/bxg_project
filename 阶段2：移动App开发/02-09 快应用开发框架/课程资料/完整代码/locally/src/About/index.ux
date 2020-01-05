@@ -1,0 +1,177 @@
+<template>
+  <div class="about-page">
+    <image class="icon" src="{{icon}}">
+    <text class="name">{{name}}</text>
+
+    <div class="tags">
+      <text class="tag">无安装</text>
+      <text class="gap">|</text>
+      <text class="tag">体积小</text>
+      <text class="gap">|</text>
+      <text class="tag">一步直达</text>
+    </div>
+
+    <text class="description">{{description}}</text>
+
+    <div class="detail">
+      <div class="item">
+        <text class="title">服务类型</text>
+        <text class="content">生活类</text>
+      </div>
+      <div class="item">
+        <text class="title">主体信息</text>
+        <text class="content">WEDN.NET</text>
+      </div>
+      <div class="item">
+        <text class="title">源码</text>
+        <text class="content"><a href="https://github.com/zce/quickapp-locally">https://github.com/zce/quickapp-locally</a></text>
+      </div>
+    </div>
+
+    <input class="btn" type="button" value="创建快捷方式" onclick="createShortcut">
+
+    <text class="copyright">Copyright © WEDN.NET</text>
+    <text class="tips">即点即用，让你省去下载安装的步骤，立即使用各类服务</text>
+  </div>
+</template>
+
+<script>
+  import app from '@system.app'
+  import prompt from '@system.prompt'
+  import shortcut from '@system.shortcut'
+
+  export default {
+    private: {
+      name: '',
+      icon: '',
+      description: ''
+    },
+
+    onInit () {
+      const appInfo = app.getInfo()
+      this.icon = appInfo.icon
+      this.name = appInfo.name
+      this.description = this.$app.$data.description
+    },
+
+    createShortcut () {
+      shortcut.hasInstalled({
+        success (installed) {
+          if (installed) {
+            return prompt.showToast({ message: '已创建桌面图标' })
+          }
+
+          shortcut.install({
+            success () {
+              prompt.showToast({ message: '成功创建桌面图标' })
+            },
+            fail (msg, e) {
+              prompt.showToast({ message: 'error: ' + e + '---' + msg })
+            }
+          })
+        }
+      })
+    }
+  }
+</script>
+
+<style>
+  .about-page {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .icon {
+    margin-top: 90px;
+    width: 150px;
+    height: 150px;
+    border-radius: 15px;
+    border: 1px solid #ced4da;
+  }
+
+  .name {
+    margin-top: 30px;
+    font-size: 46px;
+    color: #495057;
+  }
+
+  .tags {
+    margin-top: 30px;
+    align-items: center;
+  }
+
+  .tag {
+    padding: 0 15px;
+    font-size: 28px;
+    color: #40c057;
+  }
+
+  .gap {
+    font-size: 20px;
+    color: #ced4da;
+  }
+
+  .description {
+    width: 620px;
+    margin-top: 40px;
+    line-height: 35px;
+    font-size: 25px;
+    text-align: center;
+    color: #868e96;
+  }
+
+  .detail {
+    flex-direction: column;
+    width: 630px;
+    margin-top: 50px;
+    border-top-width: 1px;
+    border-top-color: #f1f3f5;
+  }
+
+  .detail .item {
+    height: 90px;
+    border-bottom-width: 1px;
+    border-bottom-color: #f1f3f5;
+  }
+
+  .detail .title {
+    width: 160px;
+    padding-left: 10px;
+    font-size: 25px;
+    color: #343a40;
+  }
+
+  .detail .content {
+    font-size: 25px;
+    color: #868e96;
+  }
+
+  .btn {
+    width: 500px;
+    height: 80px;
+    margin-top: 100px;
+    border-radius: 100px;
+    background-color: #15aabf;
+    font-size: 30px;
+    color: #ffffff;
+  }
+
+  .copyright {
+    width: 750px;
+    position: fixed;
+    bottom: 70px;
+    font-size: 25px;
+    text-align: center;
+    color: #dee2e6;
+  }
+
+  .tips {
+    width: 750px;
+    position: fixed;
+    bottom: 15px;
+    line-height: 35px;
+    font-size: 25px;
+    text-align: center;
+    color: #e9ecef;
+  }
+</style>

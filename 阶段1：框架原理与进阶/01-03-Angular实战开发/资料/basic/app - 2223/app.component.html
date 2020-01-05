@@ -1,0 +1,5 @@
+<div>
+  <!-- 需求：给偶数行添加红色背景 -->
+  <p *ngFor="let item of colors; let i = index; let odd = odd" [class.red]="!odd">{{ item }} {{ i }} {{ odd ? '奇数项': '偶数项'
+    }}</p>
+</div>

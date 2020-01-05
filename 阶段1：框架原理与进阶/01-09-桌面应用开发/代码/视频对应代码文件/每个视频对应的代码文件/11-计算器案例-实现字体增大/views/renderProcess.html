@@ -1,0 +1,23 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title></title>
+</head>
+<body>
+    <button id='tomain'>渲染进程中发送消息给主进程</button>
+    <button id='one'>渲染进程1</button>
+    <button id='two'>渲染进程2</button>
+    <button id='newwindow'>打开一个新窗口</button>
+
+    <script src="../renderProcess/renderP.js"></script>
+
+    <script>
+            require('../renderProcess/first.js')
+            require('../renderProcess/second.js')
+    </script>
+</body>
+</html>

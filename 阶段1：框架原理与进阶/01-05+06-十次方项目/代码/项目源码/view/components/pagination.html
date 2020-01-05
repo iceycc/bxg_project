@@ -1,0 +1,15 @@
+{% macro pagination(_limit, _page, lastPage) %}
+<div class="sui-pagination">
+  <ul>
+    <li class="prev {{ '' if _page > 1 else 'disabled' }}"><a href="?_page={{ (_page - 1) if _page > 1 else '#' }}">上一页</a></li>
+    {% for item in pageItems(lastPage, _page) %}
+    {% if item === '...' %}
+    <li class="dotted"><span>...</span></li>
+    {% else %}
+    <li class="{{ 'active' if item === _page else '' }}"><a href="?_page={{ item }}">{{ item }}</a></li>
+    {% endif %}
+    {% endfor %}
+    <li class="next {{ '' if _page < lastPage else 'disabled' }}"><a href="?_page={{ (_page + 1) if _page < lastPage else '#' }}">下一页</a></li>
+  </ul>
+</div>
+{% endmacro %}

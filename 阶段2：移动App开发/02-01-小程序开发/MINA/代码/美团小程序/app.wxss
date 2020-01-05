@@ -1,0 +1,8 @@
+@import 'font/iconfont.wxss';
+@import 'font/iconfont2.wxss';
+page{ 
+  padding: 2px 5px;
+}
+page,input,view,image,navigator,text{
+  box-sizing: border-box;
+}

@@ -1,0 +1,26 @@
+<!--The content below is only a placeholder and can be replaced.-->
+<div>
+
+  <!-- 不能使用原生的a标签去做路由跳转，因为它会导致页面刷新 -->
+  <!-- <a href="/users">users</a> -->
+
+  <!-- routerLink指令两种写法，一种直接传递字符串，另外一种写成数组 -->
+  <!-- routerLinkActive指令用于设置路由的激活状态，它后面跟一个类名 -->
+  <!-- <a routerLink="/users" routerLinkActive="active">users</a> -- -->
+  <!-- <a [routerLink]="['/users']">users</a> -->
+  <!-- <a routerLink="/home" routerLinkActive="active">home</a> -->
+
+
+
+  <div class="movie-header">
+    <ul>
+      <li><a routerLink="/movie/in_theaters">正在热映</a></li>
+      <li><a routerLink="/movie/coming_soon">即将上映</a></li>
+      <li><a routerLink="/movie/top250">top250</a></li>
+    </ul>
+  </div>
+  
+  <!-- <app-test></app-test> -->
+  <!-- 4. 通过RouterOutlet指令设置路由出口。作用就是用来显示路由规则匹配到的组件 -->
+  <router-outlet></router-outlet>
+</div>

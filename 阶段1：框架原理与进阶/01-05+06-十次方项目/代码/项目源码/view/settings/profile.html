@@ -1,0 +1,371 @@
+{% extends "../layout/layout.html" %}
+
+{% block head %}
+<link rel="stylesheet" type="text/css" href="/public/css/page-sj-person-myfile.css" />
+<link rel="stylesheet" href="/node_modules/cropperjs/dist/cropper.css">
+<style>
+  #preview_image {
+    width: 100%;
+  }
+</style>
+{% endblock %}
+
+{% block main %}
+<div class="wrapper  myhome">
+  <div class="sui-layout layout3">
+    <div class="sidebar">
+      <div class="myhome-list">
+        <ul class="home-list">
+          <li class="active"><a href="/settings/profile">基本资料</a></li>
+          <li><a href="/settings/account">账户设置</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="content">
+      <div class="file-edit">
+        <div class="info">
+          <h3 class="tit"><span>个人档案</span></h3>
+          <!-- 个人信息 -->
+          <div class="sui-row-fluid person canadd">
+            <div class="form-show">
+              <form action="/settings/profile/base" method="post" class="sui-form">
+                <div class="sui-row-fluid">
+                  <div class="span6">
+                    <div class="control-group">
+                      <label for="nickname" class="control-label">昵称</label>
+                      <div class="controls">
+                        <input type="text" id="name" class="input-large" name="nickname" value="{{ user.nickname }}" />
+                      </div>
+                    </div>
+                    <div class="control-group">
+                      <label for="name" class="control-label">真实姓名</label>
+                      <div class="controls">
+                        <input type="text" id="name" class="input-large" name="name" value="{{ user.name }}" />
+                      </div>
+                    </div>
+                    <div class="control-group">
+                      <label for="birthday" class="control-label">出生日期</label>
+                      <div class="controls">
+                        <input type="text" id="birthday" class="input-large" name="birthday" value="{{ user.birthday }}" />
+                      </div>
+                    </div>
+                    <div class="control-group">
+                      <label for="cellphone" class="control-label">手机号码</label>
+                      <div class="controls">
+                        <input type="text" id="cellphone" class="input-large" name="cellphone" value="{{ user.cellphone }}" />
+                      </div>
+                    </div>
+                    <div class="control-group">
+                      <label for="location" class="control-label">居住地</label>
+                      <div class="controls">
+                        <input type="text" class="input-large" id="location" name="location" value="{{ user.location }}" />
+                      </div>
+                    </div>
+                    <div class="control-group">
+                      <label for="skills" class="control-label">擅长技术</label>
+                      <div class="controls">
+                        <input type="text" class="input-large" id="skills" name="skills" value="{{ user.skills }}" />
+                      </div>
+                    </div>
+                  </div>
+                  <div class="span6">
+                    <div class="control-group" style="height: 60px;">
+                      <label for="" class="control-label">性别</label>
+                      <div class="controls">
+                        <label data-toggle="radio" class="radio-pretty inline {{ 'checked' if user.gender === '保密' else '' }}">
+                          <input type="radio" {{ 'checked' if user.gender === '保密' else '' }} name="gender" value="保密" /><span>保密</span> </label>
+                        <label data-toggle="radio" class="radio-pretty inline {{ 'checked' if user.gender === '男' else '' }}">
+                          <input type="radio" {{ 'checked' if user.gender === '男' else '' }} name="gender" value="男" /><span>男</span> </label>
+                        <label data-toggle="radio" class="radio-pretty inline {{ 'checked' if user.gender === '女' else '' }}">
+                        <input type="radio" {{ 'checked' if user.gender === '女' else '' }} name="gender" value="女" /><span>女</span> </label>
+                      </div>
+                    </div>
+                    <div class="control-group">
+                      <label for="website" class="control-label">个人网站</label>
+                      <div class="controls">
+                        <input type="text" class="input-large" id="website" name="website" value="{{ user.website }}" />
+                      </div>
+                    </div>
+                    <div class="control-group">
+                      <label for="bio" class="control-label">个人简介</label>
+                      <div class="controls">
+                        <textarea name="bio" id="bio" cols="34" rows="9">{{ user.bio }}</textarea>
+                      </div>
+                    </div>
+                    <div class="control-group btns">
+                      <button class="sui-btn btn-cancel">取消</button>
+                      <button type="submit" class="sui-btn btn-save">保存</button>
+                    </div>
+                  </div>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+        <!-- 工作 -->
+        <div class="canadd">
+          <h3 class="tit"><span>工作经历</span></h3>
+          <div class="add-list">
+            {% for item in works %}
+            <li>
+              <h3>
+                <span class="add-name">{{ item.company }}-{{ item.position }}</span>
+                <a class="edit" name="delete-word" href="/works/{{ item._id }}">
+                  <i class="fa fa-pencil" aria-hidden="true"></i>删除
+                </a>
+              </h3>
+              <span class="date">{{ item.startDate }} - {{ item.endDate }}</span>
+            </li>
+            {% endfor %}
+            <p class="add"><a href="javascript:;">添加工作经历</a></p>
+          </div>
+          <!-- work form -->
+          <div class="form-show">
+            <form action="/works" method="post" class="sui-form">
+              <input type="hidden" name="user" value="{{ user._id }}">
+              <div class="sui-row-fluid">
+                <div class="span6">
+                  <div class="control-group">
+                    <label for="company" class="control-label">公司/组织名称</label>
+                    <div class="controls">
+                      <input type="text" id="company" name="company" class="input-large" name="company" />
+                    </div>
+                  </div>
+                  <div class="control-group input-daterange" data-toggle="datepicker">
+                    <label for="" class="control-label">起止时间</label>
+                    <div class="controls date">
+                      <input type="text" class="input-medium input-date" name="startDate" />
+                      <span>-</span>
+                      <input type="text" class="input-medium input-date" name="endDate" />
+                    </div>
+                  </div>
+                </div>
+                <div class="span6">
+                  <div class="control-group">
+                    <label for="position" class="control-label">职位头衔</label>
+                    <div class="controls">
+                      <input type="text" id="position" name="position" class="input-large" name="job" />
+                    </div>
+                  </div>
+                  <div class="control-group">
+                    <label for="city" class="control-label">工作城市</label>
+                    <div class="controls">
+                      <input type="text" id="city" name="city" class="input-large" name="work-city" />
+                    </div>
+                  </div>
+                </div>
+                <div class="control-group">
+                  <label for="skills" class="control-label">相关技术</label>
+                  <div class="controls">
+                    <input type="text" class="input-xfat input-xxlarge" id="skills" name="skills" />
+                  </div>
+                </div>
+                <div class="control-group">
+                  <label for="description" class="control-label">职位描述</label>
+                  <div class="controls">
+                    <textarea id="description" name="description" rows="3" class="input-block-level"></textarea>
+                  </div>
+                </div>
+                <div class="control-group btns">
+                  <button class="sui-btn btn-cancel">取消</button>
+                  <button class="sui-btn btn-save">保存</button>
+                </div>
+              </div>
+            </form>
+          </div>
+        </div>
+        <!-- 教育 -->
+        <div class="canadd">
+          <h3 class="tit"><span>教育经历</span></h3>
+          <div class="add-list">
+            <li>
+              <h3> <span class="add-name">传智专修学院-全栈工程师</span> <span class="gray edit"><i class="fa fa-pencil" aria-hidden="true"></i> 编辑</span> </h3> <span class="date">2017年01月21日 - 至今</span> </li>
+            <p class="add"><a href="javascript:;">添加教育经历</a></p>
+          </div>
+          <!-- edu form -->
+          <div class="form-show">
+            <form action="" class="sui-form">
+              <div class="sui-row-fluid">
+                <div class="span6">
+                  <div class="control-group">
+                    <label for="" class="control-label">院校名称</label>
+                    <div class="controls">
+                      <input type="text" id="company" class="input-large" placeholder="院校名称" name="company" />
+                    </div>
+                  </div>
+                  <div class="control-group input-daterange" data-toggle="datepicker">
+                    <label for="" class="control-label">起止时间</label>
+                    <div class="controls date">
+                      <input type="text" class="input-medium input-date" value="2016-01-01" />
+                      <span>-</span>
+                      <input type="text" class="input-medium input-date" />
+                    </div>
+                  </div>
+                </div>
+                <div class="span6">
+                  <div class="control-group">
+                    <label for="" class="control-label">所学专业</label>
+                    <div class="controls">
+                      <input type="text" id="job" class="input-large" placeholder="如：Java工程师" name="job" />
+                    </div>
+                  </div>
+                  <div class="control-group">
+                    <label for="" class="control-label">学历</label>
+                    <div class="controls">
+                      <span class="sui-dropdown dropdown-bordered select"><span class="dropdown-inner"><a id="drop4" role="button" data-toggle="dropdown" href="#" class="dropdown-toggle"> <input value="hz" name="city" type="hidden" /><i class="caret"></i><span>专科</span></a>
+                      <ul id="menu4" role="menu" aria-labelledby="drop4" class="sui-dropdown-menu">
+                        <li role="presentation"><a role="menuitem" tabindex="-1" href="javascript:void(0);" value="bj">专科</a></li>
+                        <li role="presentation"><a role="menuitem" tabindex="-1" href="javascript:void(0);" value="sb">本科</a></li>
+                        <li role="presentation" class="active"><a role="menuitem" tabindex="-1" href="javascript:void(0);" value="hz">硕士</a></li>
+                      </ul>
+                      </span>
+                      </span>
+                    </div>
+                  </div>
+                </div>
+                <div style="clear:both"></div>
+                <div class="control-group">
+                  <label for="" class="control-label">相关技术</label>
+                  <div class="controls">
+                    <input type="text" placeholder="标签，如:php可使用逗号，分号； 来分隔" class="input-xfat input-xxlarge" id="tags" />
+                  </div>
+                </div>
+                <div class="control-group">
+                  <label for="" class="control-label">取得成就</label>
+                  <div class="controls">
+                    <textarea rows="3" class="input-block-level" placeholder="在校期间做了什么工作，解决了什么问题，做了什么贡献？"></textarea>
+                  </div>
+                </div>
+                <div class="control-group btns">
+                  <button class="sui-btn btn-cancel">取消</button>
+                  <button class="sui-btn btn-save">保存</button>
+                </div>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="sidebar right">
+      <h3><span>头像设置</span></h3>
+      <div class="photo">
+        <img src="{{ config.apiHost + user.avatar if user.avatar else '/public/img/widget-o-photo.png' }}" alt="" />
+        <form id="uploadForm" enctype="multipart/form-data">
+          <div class="text">
+            <input type="file" id="file" name="file" style="display: none;">
+            <label class="sui-btn btn-success" for="file">上传头像</label>
+            <p>支持 jpg/jpeg/png 格式</p>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+  <div class="clearfix"></div>
+  <div id="myModal" tabindex="-1" role="dialog" data-hasfoot="false" class="sui-modal hide fade">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" data-dismiss="modal" aria-hidden="true" class="sui-close">×</button>
+          <h4 id="myModalLabel" class="modal-title">头像裁剪</h4>
+        </div>
+        <div class="modal-body">
+          <img id="preview_image" src="" alt="" />
+        </div>
+        <div class="modal-footer">
+          <button type="button" id="submit_avatar" class="sui-btn btn-success btn-large" style="width: 100%;">确认</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}
+
+{% block script %}
+<script src="/node_modules/cropperjs/dist/cropper.js"></script>
+<script>
+  let cropper = null
+  // 1. 点击上传头像，选择文件
+  // 2. 上传图片到服务端
+  //    得到一个服务端图片地址
+  // 3. 把服务端图片地址设置到裁切的图片
+  //    显示弹出框
+  // 4. 初始化图片裁切插件
+  // 5. 确认裁切上传
+  //    提交裁切的图片、x、y、width、height
+  // 6. 服务端返回用户的信息（包含用户的头像地址）
+  $('#file').on('change', function () {
+    $.ajax({
+      // 上传文件接口：http://xxxxx/upload
+      // 在我们的服务端把 /api 代理到 http://数据接口服务/upload
+      url: '/api/upload',
+      type: 'POST',
+      cache: false,
+      data: new FormData($('#uploadForm')[0]),
+      processData: false,
+      contentType: false,
+      success: function (data) {
+        var image = new Image()
+        var imgSrc = 'http://localhost:8000' + data[0].url
+        image.src = 'http://localhost:8000' + data[0].url
+        image.onload = function () {
+          $('#preview_image').attr('src', imgSrc)
+          $('#myModal').modal('show')
+        }
+      },
+      error: function (err) {
+        console.log(err)
+      }
+    })
+  })
+
+  // 当模态框弹出来以后，初始化图片裁切插件
+  $('#myModal').on('shown', function () {
+    initialCropper()
+  })
+
+  $('#submit_avatar').on('click', function () {
+    var cropperData = cropper.getData()
+    $.ajax({
+      url: '/settings/profile/avatar',
+      type: 'POST',
+      data: {
+        file: $('#preview_image').attr('src'),
+        x: cropperData.x,
+        y: cropperData.y,
+        width: cropperData.width,
+        height: cropperData.height
+      },
+      success: function (data) {
+        window.location.reload()
+      },
+      error: function (err) {
+        console.log(err)
+      }
+    })
+  })
+
+  function initialCropper() {
+    const image = document.getElementById('preview_image')
+    cropper = new Cropper(image, {
+      aspectRatio: 1 / 1
+    });
+  }
+
+  $('a[name=delete-word]').on('click', function () {
+    if (!window.confirm('确认删除吗？')) {
+      return false
+    }
+    $.ajax({
+      url: $(this).attr('href'),
+      type: 'DELETE',
+      success: function (data) {
+        window.location.reload()
+      },
+      error: function (err) {
+        console.log(err)
+      }
+    })
+    return false
+  })
+</script>
+{% endblock %}

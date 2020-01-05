@@ -1,0 +1,9 @@
+<div class="detail">
+  <div class="detail-box" *ngIf="movieDetail">
+    <img [src]="movieDetail.img" [alt]="movieDetail.title">
+    <h3>{{movieDetail.title}}</h3>
+    <p>电影类型：{{movieDetail.genres.join(',')}}</p>
+    <p>上映时间：{{movieDetail.details[0].year}}</p>
+    <p>剧情介绍：{{movieDetail.details[0].summary}}</p>
+  </div>
+</div>

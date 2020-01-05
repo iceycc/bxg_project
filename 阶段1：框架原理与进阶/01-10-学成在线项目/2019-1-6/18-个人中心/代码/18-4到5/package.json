@@ -1,0 +1,24 @@
+{
+  "name": "create-next-example-app",
+  "scripts": {
+    "dev": "next -p 85",
+    "build": "next build",
+    "start": "next start -p 87"
+  },
+  "dependencies": {
+    "@zeit/next-css": "1.0.1",
+    "@zeit/next-less": "1.0.1",
+    "antd": "3.10.3",
+    "es6-promise": "4.2.5",
+    "isomorphic-fetch": "2.2.1",
+    "less": "3.8.1",
+    "next": "^7.0.2",
+    "next-redux-wrapper": "2.0.0",
+    "qrcode.react": "^0.9.2",
+    "react": "16.6.0",
+    "react-dom": "16.6.0",
+    "react-redux": "5.0.7",
+    "redux": "4.0.0",
+    "redux-persist": "5.10.0"
+  }
+}

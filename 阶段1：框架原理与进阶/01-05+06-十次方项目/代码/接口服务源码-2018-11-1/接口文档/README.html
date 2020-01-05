@@ -1,0 +1,463 @@
+<html>
+  <head>
+	  <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+    <title>i5ting_ztree_toc:README</title>
+		<link href="toc/style/github-bf51422f4bb36427d391e4b75a1daa083c2d840e.css" media="all" rel="stylesheet" type="text/css"/>
+		<link href="toc/style/github2-d731afd4f624c99a4b19ad69f3083cd6d02b81d5.css" media="all" rel="stylesheet" type="text/css"/>
+		<link href="toc/css/zTreeStyle/zTreeStyle.css" media="all" rel="stylesheet" type="text/css"/>
+	  <style>
+		pre {
+		    counter-reset: line-numbering;
+		    border: solid 1px #d9d9d9;
+		    border-radius: 0;
+		    background: #fff;
+		    padding: 0;
+		    line-height: 23px;
+		    margin-bottom: 30px;
+		    white-space: pre;
+		    overflow-x: auto;
+		    word-break: inherit;
+		    word-wrap: inherit;
+		}
+
+		pre a::before {
+		  content: counter(line-numbering);
+		  counter-increment: line-numbering;
+		  padding-right: 1em; /* space after numbers */
+		  width: 25px;
+		  text-align: right;
+		  opacity: 0.7;
+		  display: inline-block;
+		  color: #aaa;
+		  background: #eee;
+		  margin-right: 16px;
+		  padding: 2px 10px;
+		  font-size: 13px;
+		  -webkit-touch-callout: none;
+		  -webkit-user-select: none;
+		  -khtml-user-select: none;
+		  -moz-user-select: none;
+		  -ms-user-select: none;
+		  user-select: none;
+		}
+
+		pre a:first-of-type::before {
+		  padding-top: 10px;
+		}
+
+		pre a:last-of-type::before {
+		  padding-bottom: 10px;
+		}
+
+		pre a:only-of-type::before {
+		  padding: 10px;
+		}
+
+		.highlight { background-color: #ffffcc } /* RIGHT */
+		</style>
+  </head>
+  <body>
+	  <div>
+				<div style='width:25%;'>
+						<ul id="tree" class="ztree" style='width:100%'>
+
+						</ul>
+				</div>
+        <div id='readme' style='width:70%;margin-left:20%;'>
+          	<article class='markdown-body'>
+            	<h1 id="-api-">十次方 API 接口文档</h1>
+<blockquote>
+<p>本视频录制初期采用的是文件型数据库，后期考虑到课程升级及接口的扩展性，所以将数据库更换为了 MongoDB 数据库。所以有个别接口可能和视频中的接口不一致。但大体都是一样的的。所以请大家在学习的过程中一定以该接口文档中的接口为准。</p>
+</blockquote>
+<h2 id="-">更新说明</h2>
+<ul>
+<li>原接口中数据的属性 <code>id</code> 在新版本中都统一为了 <code>_id</code></li>
+</ul>
+<h2 id="-">接口部署</h2>
+<h3 id="-mongodb">安装 mongodb</h3>
+<ul>
+<li>下载 mongodb<ul>
+<li>下载地址：<a href="https://www.mongodb.com/download-center/community">https://www.mongodb.com/download-center/community</a></li>
+</ul>
+</li>
+<li>安装方式<ul>
+<li><a href="https://docs.mongodb.com/manual/administration/install-on-linux/">在 Linux 上安装 mongodb</a></li>
+<li><a href="https://docs.mongodb.com/manual/tutorial/install-mongodb-on-os-x/">在 macOS 上安装 mongodb</a></li>
+<li><a href="https://docs.mongodb.com/manual/tutorial/install-mongodb-on-windows/">在 Windows 上安装 mongodb</a></li>
+</ul>
+</li>
+</ul>
+<h3 id="-">安装项目依赖</h3>
+<p>在终端中进入接口项目目录并执行以下命令</p>
+<pre><code class="lang-bash">npm install
+</code></pre>
+<h3 id="-">启动接口服务</h3>
+<pre><code class="lang-bash">npm run dev
+</code></pre>
+<blockquote>
+<p>注意：</p>
+<ul>
+<li>启动服务之前务必保证先启动 mongodb 数据库</li>
+</ul>
+</blockquote>
+<p>接口服务默认占用 8000 端口，如果 8000 端口被占用，解决方式如下：</p>
+<p>方式一：关闭其他占用 8000 端口的服务</p>
+<p>方式二：修改项目中的 <code>package.json</code> 文件中的端口号配置（见下图）</p>
+<p><img src="assets/image-20181031133039856.png" alt="image-20181031133039856"></p>
+<hr>
+<h2 id="-">接口说明</h2>
+<h3 id="-">基准路径</h3>
+<blockquote>
+<p><code>http://localhost:8000/api/v1/</code></p>
+</blockquote>
+<h3 id="-">请求数据格式</h3>
+<p><code>Content-Type</code> 如无特殊说明，默认接受 <code>application/json</code> 格式数据。 </p>
+<hr>
+<h2 id="-postman-">使用 Postman 进行接口测试</h2>
+<h3 id="-">安装</h3>
+<ul>
+<li>下载地址<ul>
+<li><a href="https://www.getpostman.com/apps">https://www.getpostman.com/apps</a></li>
+</ul>
+</li>
+<li>安装</li>
+</ul>
+<h2 id="-">使用</h2>
+<hr>
+<h2 id="-">用户</h2>
+<h3 id="-">创建用户</h3>
+<blockquote>
+<p><code>POST</code> /users</p>
+</blockquote>
+<p>BODY</p>
+<pre><code class="lang-json">{
+  &quot;username&quot;: &quot;xxx&quot;,
+  &quot;password&quot;: &quot;xxx&quot;,
+  &quot;nickname&quot;: &quot;xxx&quot;
+}
+</code></pre>
+<h3 id="-id-">根据用户 id 查询用户信息</h3>
+<blockquote>
+<p><code>GET</code> /users/:userId</p>
+</blockquote>
+<h3 id="-">根据用户名查询用户</h3>
+<blockquote>
+<p><code>GET</code> /users?username=xxx</p>
+</blockquote>
+<h3 id="-">根据昵称查询用户</h3>
+<blockquote>
+<p><code>GET</code> /users?nickname=xxx</p>
+</blockquote>
+<h3 id="-url_token-">根据 url_token 查询用户</h3>
+<blockquote>
+<p><code>GET</code> /users/url_token/:xxx</p>
+</blockquote>
+<h3 id="-urltoken">更新用户的 urlToken</h3>
+<blockquote>
+<p><code>PATCH</code> /users/:userId/url_token</p>
+</blockquote>
+<p>BODY</p>
+<pre><code class="lang-json">{
+  &quot;urlToken&quot;: &quot;xxx&quot;
+}
+</code></pre>
+<h3 id="-">更新用户头像</h3>
+<blockquote>
+<p><code>PATCH</code> /users/:userId/avatar</p>
+</blockquote>
+<p>BODY</p>
+<pre><code class="lang-json">{
+  &quot;file&quot;: &quot;xxx&quot;,
+  &quot;x&quot;: &quot;xxx&quot;,
+  &quot;y&quot;: &quot;xxx&quot;,
+  &quot;width&quot;: &quot;xxx&quot;,
+  &quot;height&quot;: &quot;xxx&quot;
+}
+</code></pre>
+<h3 id="-">用户注册</h3>
+<blockquote>
+<p><code>POST</code> /users/signup</p>
+</blockquote>
+<p>BODY</p>
+<pre><code class="lang-json">{
+  &quot;email&quot;: &quot;xxx&quot;,
+  &quot;password&quot;: &quot;xxx&quot;,
+  &quot;nickname&quot;: &quot;xxx&quot;
+}
+</code></pre>
+<h3 id="-">用户登录</h3>
+<blockquote>
+<p><code>POST</code> /users/signin</p>
+</blockquote>
+<p>BODY</p>
+<pre><code class="lang-json">{
+  &quot;email&quot;: &quot;xxx&quot;,
+  &quot;password&quot;: &quot;xxx&quot;
+}
+</code></pre>
+<h3 id="-">更新用户基本信息</h3>
+<blockquote>
+<p><code>PATCH</code> /users/:userId/profile</p>
+</blockquote>
+<p>BODY</p>
+<pre><code class="lang-json">{
+  &quot;name&quot;: &quot;xxx&quot;,
+  &quot;birthday&quot;: &quot;xxx&quot;,
+  &quot;cellphone&quot;: &quot;xxx&quot;,
+  &quot;location&quot;: &quot;xxx&quot;,
+  &quot;skills&quot;: &quot;xxx&quot;,
+  &quot;gender&quot;: &quot;xxx&quot;,
+  &quot;website&quot;: &quot;xxx&quot;,
+  &quot;bio&quot;: &quot;xxx&quot;
+}
+</code></pre>
+<h3 id="-">更新用户密码</h3>
+<blockquote>
+<p><code>PATCH</code> /users/:userId/password</p>
+</blockquote>
+<p>BODY</p>
+<pre><code class="lang-json">{
+  &quot;password&quot;: &quot;xxx&quot;,
+  &quot;newPassword&quot;: &quot;xxx&quot;
+}
+</code></pre>
+<h3 id="-">删除用户</h3>
+<blockquote>
+<p><code>DELETE</code> /users/:userId</p>
+</blockquote>
+<hr>
+<h2 id="-">问题</h2>
+<h3 id="-">创建问题</h3>
+<blockquote>
+<p><code>POST</code> /posts</p>
+</blockquote>
+<p>BODY</p>
+<pre><code class="lang-json">{
+  &quot;title&quot;: &quot;xxx&quot;,
+  &quot;body&quot;: &quot;xxx&quot;,
+  &quot;tags&quot;: &quot;xxx&quot;,
+  &quot;userId&quot;: &quot;xxx&quot;
+}
+</code></pre>
+<h3 id="-id-">根据问题id获取问题</h3>
+<blockquote>
+<p><code>GET</code> /posts/:postId</p>
+</blockquote>
+<h3 id="-">获取问题列表</h3>
+<blockquote>
+<p><code>GET</code> /posts</p>
+<p>注：默认获取最新发布的问题</p>
+</blockquote>
+<p>PARAMS</p>
+<ul>
+<li><code>_page</code>  页码</li>
+<li><code>_limit</code>   每页大小</li>
+<li><code>filter</code>  筛选条件<ul>
+<li>hot 热门</li>
+<li>unresponsive 等待回复</li>
+</ul>
+</li>
+<li><code>tags</code>  标签</li>
+</ul>
+<h3 id="-">获取某个用户发布的问题</h3>
+<blockquote>
+<p><code>GET</code> /posts?userId=xxx</p>
+</blockquote>
+<h3 id="-">获取某个用户回复过的问题</h3>
+<blockquote>
+<p><code>GET</code> /users/:userId/comments/questions</p>
+</blockquote>
+<h3 id="-">更新问题</h3>
+<blockquote>
+<p><code>PATCH</code> /posts/:postId</p>
+</blockquote>
+<p>BODY</p>
+<pre><code class="lang-json">{
+  &quot;title&quot;: &quot;xxx&quot;,
+  &quot;body&quot;: &quot;xxx&quot;,
+  &quot;tags&quot;: &quot;xxx&quot;
+}
+</code></pre>
+<h3 id="-">删除问题</h3>
+<blockquote>
+<p><code>DELETE</code> /posts/:postId</p>
+</blockquote>
+<hr>
+<h2 id="-">回复</h2>
+<h3 id="-">创建回复</h3>
+<blockquote>
+<p><code>POST</code> /comments</p>
+</blockquote>
+<p>BODY</p>
+<pre><code class="lang-json">{
+  &quot;body&quot;: &quot;xxx&quot;,
+  &quot;userId&quot;: &quot;xxx&quot;,
+  &quot;postId&quot;: &quot;xxx&quot; 
+}
+</code></pre>
+<h3 id="-">获取某个问题的回复数量</h3>
+<blockquote>
+<p><code>GET</code> /comments/count?postId=xxx</p>
+</blockquote>
+<h3 id="-">获取某个问题的所有回复</h3>
+<blockquote>
+<p><code>GET</code> /comments?postId=xxx</p>
+</blockquote>
+<h3 id="-">删除回复</h3>
+<blockquote>
+<p><code>DELETE</code> /comments/:commentId</p>
+</blockquote>
+<h3 id="-">更新回复</h3>
+<blockquote>
+<p><code>PATCH</code> /comments/:commentId</p>
+</blockquote>
+<p>BODY</p>
+<pre><code class="lang-json">{
+  &quot;body&quot;: &quot;&quot;
+}
+</code></pre>
+<hr>
+<h2 id="-">标签</h2>
+<h3 id="-">获取标签列表</h3>
+<blockquote>
+<p><code>GET</code> /tags</p>
+</blockquote>
+<p>PARAMS</p>
+<ul>
+<li><code>_page</code>  页码</li>
+<li><code>_limit</code>  每页大小</li>
+</ul>
+<h3 id="-">获取某个用户关注的标签</h3>
+<blockquote>
+<p><code>GET</code> /tags/followers/:userId</p>
+</blockquote>
+<h3 id="-">根据标签名获取标签</h3>
+<blockquote>
+<p><code>GET</code> /tags/:tagName</p>
+</blockquote>
+<h3 id="-">关注标签</h3>
+<blockquote>
+<p><code>POST</code> /tags/:tagName/followers</p>
+</blockquote>
+<p>BODY</p>
+<pre><code class="lang-json">{
+  &quot;userId&quot;: &quot;xxx&quot;
+}
+</code></pre>
+<hr>
+<h2 id="-">投票</h2>
+<h3 id="-">查询投票信息</h3>
+<blockquote>
+<p><code>GET</code> /votes</p>
+</blockquote>
+<p>PARAMS</p>
+<ul>
+<li>type<ul>
+<li>所属类型</li>
+</ul>
+</li>
+<li>typeId<ul>
+<li>类型id</li>
+</ul>
+</li>
+<li>userId<ul>
+<li>用户id</li>
+</ul>
+</li>
+</ul>
+<h3 id="-">创建投票</h3>
+<blockquote>
+<p><code>POST</code> /votes</p>
+</blockquote>
+<p>BODY</p>
+<pre><code class="lang-json">{
+  &quot;type&quot;: &quot;xxx&quot;,
+  &quot;typeId&quot;: &quot;xxx&quot;,
+  &quot;value&quot;: &quot;xxx&quot;,
+  &quot;userId&quot;: &quot;xxx&quot;
+}
+</code></pre>
+<blockquote>
+<p>注：</p>
+<ul>
+<li>type 值为 <code>posts</code> 或者 <code>comments</code></li>
+<li>typeId 为 type 类型的 id</li>
+<li>value 可取的值为 <code>0</code>、<code>1</code>、<code>-1</code></li>
+</ul>
+</blockquote>
+<hr>
+<h2 id="-">用户工作经历</h2>
+<h3 id="-">创建工作经历</h3>
+<blockquote>
+<p><code>POST</code> /works</p>
+</blockquote>
+<p>BODY</p>
+<pre><code class="lang-json">{
+  &quot;user&quot;: &quot;xxx&quot;,
+  &quot;company&quot;: &quot;xxx&quot;,
+  &quot;position&quot;: &quot;xxx&quot;,
+  &quot;startDate&quot;: &quot;xxx&quot;,
+  &quot;endDate&quot;: &quot;xxx&quot;,
+  &quot;city&quot;: &quot;xxx&quot;,
+  &quot;skills&quot;: &quot;xxx&quot;,
+  &quot;description&quot;: &quot;xxx&quot;
+}
+</code></pre>
+<h3 id="-">查询某个用户的工作经历</h3>
+<blockquote>
+<p><code>GET</code> <code>/users/:userId/works</code></p>
+</blockquote>
+<h3 id="-">更新工作经历</h3>
+<blockquote>
+<p><code>PATCH</code> /works/:wordId</p>
+</blockquote>
+<p>BODY</p>
+<pre><code class="lang-json">{
+  &quot;company&quot;: &quot;xxx&quot;,
+  &quot;position&quot;: &quot;xxx&quot;,
+  &quot;startDate&quot;: &quot;xxx&quot;,
+  &quot;endDate&quot;: &quot;xxx&quot;,
+  &quot;city&quot;: &quot;xxx&quot;,
+  &quot;skills&quot;: &quot;xxx&quot;,
+  &quot;description&quot;: &quot;xxx&quot;
+}
+</code></pre>
+<h3 id="-">删除工作经历</h3>
+<blockquote>
+<p><code>DELETE</code> /works/:workId</p>
+</blockquote>
+<h2 id="-">公共</h2>
+<h3 id="-">文件上传</h3>
+<blockquote>
+<p><code>POST</code> /upload</p>
+</blockquote>
+<p>HEADERS</p>
+<ul>
+<li>Content-Type  <code>multipart/form-data</code></li>
+</ul>
+<p>BODY</p>
+<ul>
+<li>字段任意，内容为文件即可</li>
+</ul>
+
+          	</article>
+        </div>
+		</div>
+  </body>
+</html>
+<script type="text/javascript" src="toc/js/jquery-1.4.4.min.js"></script>
+<script type="text/javascript" src="toc/js/jquery.ztree.all-3.5.min.js"></script>
+<script type="text/javascript" src="toc/js/ztree_toc.js"></script>
+<script type="text/javascript" src="toc_conf.js"></script>
+
+<SCRIPT type="text/javascript" >
+<!--
+$(document).ready(function(){
+    var css_conf = eval(markdown_panel_style);
+    $('#readme').css(css_conf)
+    
+    var conf = eval(jquery_ztree_toc_opts);
+		$('#tree').ztree_toc(conf);
+});
+//-->
+</SCRIPT>

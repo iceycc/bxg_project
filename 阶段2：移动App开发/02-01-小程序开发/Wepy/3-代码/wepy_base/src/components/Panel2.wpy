@@ -1,0 +1,21 @@
+<template>
+  <view  >
+    <view>头部</view>
+    <slot name="body1"></slot>
+    <slot name="body2"></slot>
+    <view>尾部</view>
+
+  </view>
+</template>
+
+<script>
+import wepy from 'wepy';
+export default class Panel2 extends wepy.component {
+  methods={
+   
+  }
+}
+</script>
+
+<style>
+</style>

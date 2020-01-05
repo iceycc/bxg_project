@@ -1,0 +1,192 @@
+{% extends "../layout/layout.html" %}
+
+{% block head %}
+<link rel="stylesheet" type="text/css" href="/public/css/page-sj-person-homepage.css" />
+{% endblock %}
+
+{% block main %}
+<div class="myhome-personinfo" style="background-color:#AEDD81">
+  <div class="wrapper">
+    <div class="person-baseinfo">
+      <!--头像信息-->
+      <div class="photo">
+        <img src="{{ config.apiHost + user.avatar if user.avatar else '/public/img/widget-o-photo.png' }}" alt="" class="person" />
+        <div class="share">
+          <span><img src="/public/img/asset-QQ.png" alt="" width="34" height="28" /></span>
+          <span><img src="/public/img/asset-weixin.png" alt="" width="28" height="28" /></span>
+          <span><img src="/public/img/asset-weibo.png" alt="" width="28" height="28" /></span>
+        </div>
+      </div>
+      <!--文字信息-->
+      <div class="info">
+        <h1>{{ user.nickname }}
+          <span class="allinfo">
+            {% if user._id === sessionUser._id %}
+            <a href="/settings/profile">编辑个人资料</a>
+            {% endif %}
+          </span>
+        </h1>
+        <ul class="fill">
+          <li> <i class="fa fa-map-marker" aria-hidden="true"></i> <span class="edit-item"> {{ user.location }}</span>
+            <form action="" class="sui-form form-inline">
+              <input type="text" placeholder="现居城市" />
+              <button class="sui-btn btn-danger save-btn">保存</button>
+            </form>
+          </li>
+          <li> <i class="fa fa-graduation-cap" aria-hidden="true"></i> <span class="edit-item"> 填写毕业院校</span>
+            <form action="" class="sui-form form-inline">
+              <input type="text" placeholder="院校名称" />
+              <input type="text" placeholder="所学专业" />
+              <button class="sui-btn btn-danger save-btn">保存</button>
+            </form>
+          </li>
+          <li> <i class="fa fa-shopping-bag" aria-hidden="true"></i> <span class="edit-item">{{ user.work.company }}</span>
+            <form action="" class="sui-form form-inline">
+              <input type="text" placeholder="公司/组织名称" />
+              <input type="text" placeholder="职位头衔" />
+              <button class="sui-btn btn-danger save-btn">保存</button>
+            </form>
+          </li>
+          <li> <i class="fa fa-link" aria-hidden="true"></i> <span class="edit-item">{{ user.website }}</span>
+            <form action="" class="sui-form form-inline">
+              <input type="text" placeholder="个人网站" />
+              <button class="sui-btn btn-danger save-btn">保存</button>
+            </form>
+          </li>
+        </ul>
+      </div>
+    </div>
+    <!--右侧编辑-->
+    <div class="edit-info">
+      <h4>个人简介</h4>
+      <div class="info-box">
+        <div class="edit-intro">
+          {{ user.bio }}
+        </div>
+      </div>
+    </div>
+    <div class="clearfix"></div>
+  </div>
+</div>
+<!--两列布局-->
+<div class="wrapper  myhome">
+  <div class="right-content">
+    <div class="home-content">
+      <ul class="sui-nav nav-tabs nav-large">
+        <li class="active"><a href="#question">提问</a></li>
+        <li><a href="#answer">回答</a></li>
+        <li><a href="#follow">关注</a></li>
+      </ul>
+      <div class="tab-content tab-wraped">
+        <div id="question" class="tab-pane active">
+          <!-- <ul class="question-list">
+            <li> <span class="fl good"><span class="num">12</span> 有用</span> <span class="title"><a href="#">有关PHP初级进阶的问题</a></span><span class="clearfix"></span> </li>
+            <li> <span class="fl good"><span class="num">12</span> 有用</span> <span class="title"><a href="#">有关JAVA初级进阶的问题</a></span><span class="clearfix"></span> </li>
+            <li> <span class="fl good"><span class="num">12</span> 有用</span> <span class="title"><a href="#">有关HTML5初级进阶的问题</a></span><span class="clearfix"></span> </li>
+            <li> <span class="fl good"><span class="num">12</span> 有用</span> <span class="title"><a href="#">有关C++初级进阶的问题</a></span><span class="clearfix"></span> </li>
+            <li> <span class="fl good"><span class="num">12</span> 有用</span> <span class="title"><a href="#">有关python初级进阶的问题</a></span><span class="clearfix"></span> </li>
+          </ul> -->
+        </div>
+        <div id="answer" class="tab-pane">
+          <ul class="question-list">
+            <li> <span class="fl good"> <span class="num">8</span> 有用</span> <span class="title"><a href="#">有关PHP初级进阶的问题</a></span> <span class="fr date">2017-07-05 15:08</span> <span class="clearfix"></span> </li>
+            <li> <span class="fl good"> <span class="num">7</span> 有用</span> <span class="title"><a href="#">有关JAVA初级进阶的问题</a></span> <span class="fr date">2017-07-05 15:08</span> <span class="clearfix"></span> </li>
+            <li> <span class="fl good"> <span class="num">6</span> 有用</span> <span class="title"><a href="#">有关HTML5初级进阶的问题</a></span> <span class="fr date">2017-07-05 15:08</span> <span class="clearfix"></span> </li>
+            <li> <span class="fl good"> <span class="num">12</span> 有用</span> <span class="title"><a href="#">有关C++初级进阶的问题</a></span> <span class="fr date">2017-07-05 15:08</span> <span class="clearfix"></span> </li>
+            <li> <span class="fl good"> <span class="num">12</span> 有用</span> <span class="title"><a href="#">有关python初级进阶的问题</a></span> <span class="fr date">2017-07-05 15:08</span> <span class="clearfix"></span> </li>
+          </ul>
+        </div>
+        <div id="follow" class="tab-pane">
+          <ul class="question-list">
+            <li> <span class="fl good"> <span class="num">8</span> 有用</span> <span class="title"><a href="#">有关PHP初级进阶的问题</a></span> <span class="fr date">2017-07-05 15:08</span> <span class="clearfix"></span> </li>
+            <li> <span class="fl good"> <span class="num">7</span> 有用</span> <span class="title"><a href="#">有关JAVA初级进阶的问题</a></span> <span class="fr date">2017-07-05 15:08</span> <span class="clearfix"></span> </li>
+            <li> <span class="fl good"> <span class="num">6</span> 有用</span> <span class="title"><a href="#">有关HTML5初级进阶的问题</a></span> <span class="fr date">2017-07-05 15:08</span> <span class="clearfix"></span> </li>
+            <li> <span class="fl good"> <span class="num">12</span> 有用</span> <span class="title"><a href="#">有关C++初级进阶的问题</a></span> <span class="fr date">2017-07-05 15:08</span> <span class="clearfix"></span> </li>
+            <li> <span class="fl good"> <span class="num">12</span> 有用</span> <span class="title"><a href="#">有关python初级进阶的问题</a></span> <span class="fr date">2017-07-05 15:08</span> <span class="clearfix"></span> </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="clearfix"></div>
+</div>
+{% endblock %}
+
+{% block script %}
+<script type="text/template" id="tpl-question">
+<ul class="question-list">
+  <% data.forEach(function (item, index) { %>
+    <li> <span class="fl good"><span class="num"><%= item.voteCount %></span> 有用</span> <span class="title"><a href="/questions/<%= item._id %>"><%= item.title %></a></span><span class="clearfix"></span> </li>
+  <% }) %>
+</ul>
+</script>
+
+<script type="text/template" id="tpl-answer">
+<ul class="question-list">
+  <% data.forEach(function (item, index) { %>
+    <li> <span class="fl good"><span class="num"><%= item.voteCount %></span> 有用</span> <span class="title"><a href="/questions/<%= item._id %>"><%= item.title %></a></span><span class="clearfix"></span> </li>
+  <% }) %>
+</ul>
+</script>
+
+<script type="text/template" id="tpl-follow">
+<ul class="question-list">
+<% data.forEach(function (item, index) { %>
+  <li><span class="title"><a href="/?tags=<%= item.name %>"><%= item.name %></a></span><span class="clearfix"></span> </li>
+<% }) %>
+</ul>
+</script>
+<script src="/node_modules/lodash/lodash.js"></script>
+<script>
+  var userInfo = JSON.parse(window.localStorage.getItem('userInfo'))
+
+  loadContent()
+
+  // 查询用户发布的问题：/users/:userId/questions
+  // 查询用户回答的问题：/users/:userId/comments/questions
+  // 查询用户关注的标签：/tags/followers/:userId
+  $('.home-content .sui-nav a').click(function (e) {
+    $(this).tab('show')
+    var filter = $(this).attr('href').substr(1)
+    switch(filter) {
+      case 'question':
+        loadContent()
+        break
+      case 'answer':
+        loadContent({
+          url: '/users/'+ userInfo._id +'/comments/questions',
+          tpl: '#tpl-answer',
+          container: '#answer'
+        })
+        break
+      case 'follow':
+        loadContent({
+          url: '/tags/followers/' + userInfo._id,
+          tpl: '#tpl-follow',
+          container: '#follow'
+        })
+        break
+    }
+  })
+
+  function loadContent(options) {
+    options = options || {}
+    options.url = options.url || '/users/'+ userInfo._id +'/questions'
+    options.tpl = options.tpl || '#tpl-question'
+    options.container = options.container || '#question'
+    $.ajax({
+      url: options.url,
+      method: 'GET',
+      success: function (data) {
+        var htmlStr = _.template($(options.tpl).html())({
+          data
+        })
+        $(options.container).html(htmlStr)
+      },
+      error: function (data) {
+        console.log(error)
+      }
+    })
+  }
+</script>
+{% endblock %}

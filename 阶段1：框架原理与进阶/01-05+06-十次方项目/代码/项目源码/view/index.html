@@ -1,0 +1,189 @@
+{% extends "./layout/layout.html" %}
+
+{% block head %}
+<link rel="stylesheet" type="text/css" href="/public/css/page-sj-qa-login.css" />
+<link rel="stylesheet" type="text/css" href="/public/css/page-sj-qa-logined.css" />
+<style>
+  .sui-pagination .disabled a {
+    background-color: #fafafa !important;
+    color: #999999 !important;
+  }
+</style>
+{% endblock %}
+
+{% block main %}
+<!-- {% include "./layout/navbar.html" %} -->
+<div class="wrapper qa-content">
+  <div class="fl left-list">
+    <div class="tab-content">
+      <div id="index" class="tab-pane active">
+        {% if tag %}
+        <div class="tag-intro">
+          <h3 class="title">{{ tag.name }}</h3>
+          <p class="intro"><span name="post-count">{{ tag.postCount }}</span> 个问题 - <span name="follow-count">{{ tag.followers.length }}</span> 个关注</p>
+          {% if tag.followers.indexOf(sessionUser._id) !== -1 %}
+          <a href="/tags/{{ tag.name }}/followers" class="sui-btn btn-danger" name="follow">取消关注</a>
+          {% else %}
+          <a href="/tags/{{ tag.name }}/followers" class="sui-btn btn-success" name="follow">关注</a>
+          {% endif %}
+        </div>
+        {% endif %}
+        <div class="tab-bottom-line">
+          <ul class="sui-nav nav-tabs">
+            {% for item in tabs %}
+            <li class="{{ 'active' if item.filter === filter }}"><a href="{{ item.href }}">{{ item.title }}</a></li>
+            {% endfor %}
+          </ul>
+          <div class="qa-list">
+            <div class="tab-content">
+              <div id="new" class="tab-pane active">
+                <ul class="detail-list">
+                  {% for item in questions %}
+                  <li class="qa-item">
+                    <div class="fl record">
+                      <div class="number">
+                        <div class="border useful">
+                          <p class="usenum">{{ item.voteCount }}</p>
+                          <p>有用</p>
+                        </div>
+                        <div class="border answer">
+                          <p class="ansnum">{{ item.commentCount }}</p>
+                          <p>回答</p>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="fl info">
+                      <div class="question">
+                        <p class="title"><a href="/questions/{{ item._id }}">{{ item.title }}</a></p>
+                      </div>
+                      <div class="other">
+                        <ul class="fl sui-tag">
+                          {% for tag in item.tags %}
+                          <li>
+                            <a href="/?tags={{ tag }}">{{ tag }}</a>
+                          </li>
+                          {% endfor %}
+                        </ul>
+                        <div class="fr brower">
+                          <p>{{ item.createdAt | relativeTime }} 来自 <a href="#">{{ item.user.nickname }} </a></p>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="clearfix"></div>
+                  </li>
+                  {% endfor %}
+                </ul>
+                {% from "./components/pagination.html" import pagination %}
+                {{ pagination(total=total, _limit=_limit, _page=_page, lastPage=lastPage, filter=filter) }}
+              </div>
+              <div id="hot" class="tab-pane">
+                <p>热门回答</p>
+              </div>
+              <div id="wait" class="tab-pane">
+                <p>等待回答</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div id="php" class="tab-pane">
+        php
+      </div>
+      <div id="js" class="tab-pane">
+        Javascript
+      </div>
+      <div id="python" class="tab-pane">
+        python
+      </div>
+      <div id="java" class="tab-pane">
+        java
+      </div>
+    </div>
+  </div>
+  <!-- 登录前 -->
+  <!-- <div class="fl right-tag">
+    <div class="qa-login">
+      <p>猿圈儿问答社区 帮助他人手留余香</p>
+      <form action="" class="sui-form">
+        <div class="control-group">
+          <label for="inputaccount" class="control-label">用户名</label>
+          <div class="controls">
+            <input type="text" id="inputaccount" placeholder="" />
+          </div>
+        </div>
+        <div class="control-group">
+          <label for="inputaccount" class="control-label"> <span class="fl">密码</span> <span class="fr">忘记密码</span> </label>
+          <div class="controls">
+            <input type="password" id="inputaccount" placeholder="" />
+          </div>
+        </div>
+        <div class="control-group">
+          <label for="" class="fl radio-circle checked">
+            <input type="radio" name="radio1" /><span>记住登录状态</span> </label>
+          <div class="fr controls">
+            <a class="sui-btn btn-login" href="./signin.html">登录</a>
+          </div>
+          <div class="clearfix"></div>
+        </div>
+      </form>
+      <p>还没账号？立即<a href="./signin.html" target="_blank">注册</a></p>
+    </div>
+  </div> -->
+  <!-- 登录后 -->
+  <div class="fl right-tag">
+    <div class="block-btn">
+      <a class="sui-btn btn-block btn-share" href="/questions/new">发布话题</a>
+    </div>
+    <div class="hot-tags">
+      <div class="head">
+        <h3 class="title">热门话题</h3>
+      </div>
+      <div class="tags">
+        <ul class="sui-tag">
+          {% for item in tagList %}
+          <li>
+            <a href="/?tags={{ item.name }}">{{ item.name }}</a>
+          </li>
+          {% endfor %}
+        </ul>
+        <a class="sui-btn btn-block btn-share" href="/tags">更多</a>
+      </div>
+    </div>
+  </div>
+  <div class="clearfix"></div>
+</div>
+{% endblock %}
+
+{% block script %}
+<script>
+  $('a[name=follow]').on('click', handleFollow)
+  var userInfo = JSON.parse(window.localStorage.getItem('userInfo'))
+
+  function handleFollow() {
+    var $this = $(this)
+    $.ajax({
+      url: $this.attr('href'),
+      method: 'POST',
+      success: function (data) {
+        $('span[name=follow-count]').text(data.followers.length)
+        $('span[name=post-count]').text(data.postCount)
+        if (data.followers.indexOf(userInfo._id) !== -1) {
+          // 关注了
+          $this.removeClass('btn-success')
+            .addClass('btn-dander')
+            .text('取消关注')
+        } else {
+          // 取消关注了
+          $this.removeClass('btn-dander')
+            .addClass('btn-success')
+            .text('关注')
+        }
+      },
+      error: function (error) {
+        console.log(error)
+      }
+    })
+    return false
+  }
+</script>
+{% endblock %}

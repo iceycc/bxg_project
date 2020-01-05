@@ -1,0 +1,7 @@
+<div class="movie-type">
+  <div class="movie-box" *ngFor="let item of movieList" (click)="jumpToDetail(item.id,type)">
+    <img [src]="item.img" [alt]="item.title">
+    <h4>电影名：{{item.title}}</h4>
+    <p>上映评分：{{item.rating}}</p>
+  </div>
+</div>

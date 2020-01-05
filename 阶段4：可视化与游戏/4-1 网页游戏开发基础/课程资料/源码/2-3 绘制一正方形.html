@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <canvas id="cvs" style="border: solid 1px #ccc"></canvas>
+
+    <script type="text/javascript">
+        //获取画布元素
+        var cvs=document.getElementById("cvs");
+        //获取工具集
+        var cxt=cvs.getContext("2d");
+        
+        //先绘制路径
+        //cxt.rect(30,30,50,50);
+
+        //再描边
+        //cxt.stroke();
+        //再填充
+        //cxt.fill();
+
+        //调用一次方法完成
+        //cxt.strokeRect(30,30,50,50);
+
+        cxt.fillRect(30,30,50,50);
+
+        //清空绘制好的正方形
+        cxt.clearRect(30,30,50,50);
+
+        //绘制一个半径为30的圆形
+        cxt.arc(50,50,30,0,Math.PI,true);
+
+        //绘制圆形的边
+        cxt.fill();
+
+    </script>
+</body>
+</html>

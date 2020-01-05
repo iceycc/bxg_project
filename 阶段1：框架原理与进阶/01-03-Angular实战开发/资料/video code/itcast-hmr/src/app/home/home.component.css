@@ -1,0 +1,29 @@
+.home-wrapper {
+  height: 100%;
+}
+
+/* 该组件的宿主元素（也就是父级元素） */
+/* :host {
+  background-color: #f00;
+} */
+
+:host ::ng-deep .logo {
+  height: 64px;
+  background: rgba(255, 255, 255);
+}
+
+:host ::ng-deep .logo img {
+  width: 100%;
+  margin-top: 5px;
+}
+
+.home-wrapper .logout {
+  position: absolute;
+  top: 10px;
+  left: 39px;
+  height: 40px;
+}
+
+.home-wrapper .logout:focus {
+  text-decoration: none;
+}

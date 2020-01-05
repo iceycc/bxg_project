@@ -1,0 +1,35 @@
+<style lang="less">
+</style>
+<template>
+ 
+  <view >
+
+    <D @parentFn.user="show"></D>
+    <!-- <D ></D> -->
+  </view>
+</template> 
+
+<script>
+import wepy from 'wepy';
+import D from '../components/D';
+
+export default class Index7 extends wepy.page {
+  config = {
+    navigationBarTitleText: '我的组件测试',
+    navigationBarTextStyle: 'white'
+  };
+  methods={
+   show(arg1){
+     console.log(arg1);
+   }
+  }
+  events={
+    // parentFn(arg1){
+    //   console.log(arg1);
+    // }
+  }
+  components = {
+    D
+  };
+}
+</script>

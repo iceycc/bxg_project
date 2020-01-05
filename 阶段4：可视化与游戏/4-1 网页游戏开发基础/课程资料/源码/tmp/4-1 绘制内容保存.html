@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <!-- 添加画布元素 -->
+    <canvas id="cvs"
+            width="320"
+            height="480"
+            style="border: dashed #ccc 1px">
+        你的浏览器不支持画布元素
+    </canvas>
+    <script type="text/javascript">
+       //先获取画布元素并保存
+       var cvs=document.getElementById("cvs");
+       //再获取画布元素的2d上下文环境
+       var ctx=cvs.getContext("2d");
+       
+    //    ctx.moveTo(150,60);
+    //    ctx.lineTo(150,260)
+    //    ctx.stroke();
+       
+    //    ctx.beginPath();
+    //    ctx.moveTo(50,150);
+    //    ctx.lineTo(250,150)
+    //    ctx.stroke();
+
+       ctx.font='bold 20px Calibri '
+       ctx.textAlign='center';
+       ctx.textBaseline="middle"
+       ctx.fillStyle='red';
+       ctx.fillText('中国人',150,150,120);
+     
+
+       var dataUrl=cvs.toDataURL('image/png',1)
+       console.log(dataUrl);
+    
+    </script>
+</body>
+</html>

@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <style>
+    .list{
+      overflow: hidden;
+    }
+    .list .avat{
+      float: left;
+      width: 5em;
+      height: 5em;
+      overflow: hidden;
+      border-radius: 2.5em;
+      margin-right: 1em;
+    }
+    .list .title{
+      height: 5em;
+      overflow: hidden;
+    }
+    .placeholder .avat{
+      background-color: #ccc;
+    }
+    .placeholder .title{
+      background-color: hotpink;
+    }
+  </style>
+  <title>Document</title>
+</head>
+<body>
+  <div class="list placeholder">
+    <img src="" class="avat" alt="">
+    <div class='title'></div>
+  </div>
+</body>
+</html>
+<script>
+  setTimeout(()=>{
+    // 图片src
+    document.querySelector('img').src= './img/logo.jpg'
+    // 设置内容
+    document.querySelector('.title').innerHTML = '黑马程序员,传智播客旗下高端教育品牌'
+    // 移除类名
+    document.querySelector('.list').className = 'list'
+  },3000)
+</script>
